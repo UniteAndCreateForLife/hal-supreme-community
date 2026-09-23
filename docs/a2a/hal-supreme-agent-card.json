@@ -1,0 +1,74 @@
+{
+  "name": "HAL SUPREME",
+  "description": "Free/community AI companion with Fast / Build / Expert / Council modes. OpenAI-compatible peer gateway plus MCP tools (search, images, voice, code sandbox, chat). Authorized peers only — no anonymous free-for-all. Stub Agent Card for A2A discovery alignment; full A2A task protocol is roadmap.",
+  "url": "https://api.halsupreme.com/v1",
+  "provider": {
+    "organization": "UniteAndCreateForLife",
+    "url": "https://halsupreme.com"
+  },
+  "iconUrl": "https://halsupreme.com/assets/logo.svg",
+  "version": "0.1.0-stub",
+  "documentationUrl": "https://halsupreme.com/peers.html",
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "extendedAgentCard": false
+  },
+  "securitySchemes": {
+    "bearer": {
+      "type": "http",
+      "scheme": "bearer",
+      "bearerFormat": "opaque peer/gateway token issued by operator (placeholder: <HAL_GATEWAY_TOKEN>)",
+      "description": "Authorization: Bearer <HAL_GATEWAY_TOKEN>. Tokens are scoped, rate-limited, and issued out-of-band. No secrets are embedded in this card."
+    }
+  },
+  "security": [{ "bearer": [] }],
+  "defaultInputModes": ["text/plain", "application/json"],
+  "defaultOutputModes": ["text/plain", "application/json"],
+  "skills": [
+    {
+      "id": "hal-chat",
+      "name": "OpenAI-compatible chat",
+      "description": "Chat completions via POST /v1/chat/completions. Models: hal/fast, hal/coder, hal/deep, hal/council. List via GET /v1/models; peer identity via GET /v1/peers.",
+      "tags": ["chat", "openai-compatible", "peer", "federation"],
+      "examples": [
+        "curl -s https://api.halsupreme.com/v1/models -H 'Authorization: Bearer <HAL_GATEWAY_TOKEN>'",
+        "Point OpenCode / OpenAI-compatible client at https://api.halsupreme.com/v1 with apiKey <HAL_GATEWAY_TOKEN>"
+      ],
+      "inputModes": ["application/json", "text/plain"],
+      "outputModes": ["application/json", "text/plain"]
+    },
+    {
+      "id": "hal-mcp",
+      "name": "MCP gateway tools",
+      "description": "Local stdio MCP gateway exposing community tools such as web_search, generate_image, chat, run_code, and Piper voice. See community docs for mcp.json placeholders (no secrets).",
+      "tags": ["mcp", "tools", "search", "images", "voice", "sandbox"],
+      "examples": [
+        "python -m hal_mcp.gateway_server (local; HAL_GATEWAY_URL=http://127.0.0.1:8766)",
+        "Register as MCP server in Cursor / Claude Desktop with placeholders only"
+      ],
+      "inputModes": ["application/json", "text/plain"],
+      "outputModes": ["application/json", "text/plain"]
+    }
+  ],
+  "additionalInterfaces": [
+    {
+      "url": "https://api.halsupreme.com/v1",
+      "transport": "HTTP+JSON",
+      "description": "OpenAI-compatible peer face (primary today)"
+    },
+    {
+      "url": "https://halsupreme.com",
+      "transport": "HTTPS",
+      "description": "Product UI / chat"
+    }
+  ],
+  "supportsAuthenticatedExtendedCard": false,
+  "_halNotes": {
+    "status": "community stub for A2A alignment",
+    "discord": "https://discord.gg/GnufdBbyg",
+    "communityRepo": "https://github.com/UniteAndCreateForLife/hal-supreme-community",
+    "wellKnownTarget": "https://halsupreme.com/.well-known/agent-card.json (static copy)",
+    "secrets": "none — placeholders only"
+  }
+}
