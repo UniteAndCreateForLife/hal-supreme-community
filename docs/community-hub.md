@@ -1,14 +1,14 @@
-ï»¿# Community hub
+# Community hub
 
 Short pointer to where HAL SUPREME community work happens.
 
 ## Themes (v1)
 
-- **Docs** â€” peer join, MCP, onboarding clarity
-- **Peers** â€” OpenAI-compatible federation examples (FREE only)
-- **MCP** â€” host config templates with placeholders
-- **Good first issues** â€” typos, FAQ, accessibility, copy-paste curl blocks
-- **Discussions** â€” questions, ideas, show-and-tell (no secrets)
+- **Docs** — peer join, MCP, onboarding clarity
+- **Peers** — OpenAI-compatible federation examples (FREE only)
+- **MCP** — host config templates with placeholders
+- **Good first issues** — typos, FAQ, accessibility, copy-paste curl blocks
+- **Discussions** — questions, ideas, show-and-tell (no secrets)
 
 ## Where to go
 
@@ -17,6 +17,7 @@ Short pointer to where HAL SUPREME community work happens.
 | Product | https://halsupreme.com |
 | Peer join UI | https://halsupreme.com/peers.html |
 | Talk | [GitHub Discussions](https://github.com/UniteAndCreateForLife/hal-supreme-community/discussions) |
+| Discord | https://discord.gg/GnufdBbyg |
 | Bugs / tasks | [Issues](https://github.com/UniteAndCreateForLife/hal-supreme-community/issues) |
 | How to contribute | [CONTRIBUTING.md](../CONTRIBUTING.md) |
 | Conduct | [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md) |
@@ -24,4 +25,6 @@ Short pointer to where HAL SUPREME community work happens.
 
 ## Discord
 
-A public Discord invite link will be added here when ready. Until then, use GitHub Discussions. **Never paste gateway tokens in Discord.**
+Public invite: **https://discord.gg/GnufdBbyg**
+
+Use GitHub Discussions for long-form docs Q&A. **Never paste gateway tokens, API keys, or private paths in Discord.**

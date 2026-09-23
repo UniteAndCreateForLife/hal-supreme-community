@@ -1,8 +1,8 @@
-ï»¿# HAL SUPREME Community
+# HAL SUPREME Community
 
-**Public community hub** for [HAL SUPREME](https://halsupreme.com) â€” docs, peer join, MCP setup, and good first issues.
+**Public community hub** for [HAL SUPREME](https://halsupreme.com) — docs, peer join, MCP setup, and good first issues.
 
-HAL SUPREME is a free, community-friendly AI companion and creator stack. This repository is for **documentation, examples, and onboarding** â€” not the private product monorepo.
+HAL SUPREME is a free, community-friendly AI companion and creator stack. This repository is for **documentation, examples, and onboarding** — not the private product monorepo.
 
 | | |
 | --- | --- |
@@ -10,15 +10,16 @@ HAL SUPREME is a free, community-friendly AI companion and creator stack. This r
 | Peer join | https://halsupreme.com/peers.html |
 | API | https://api.halsupreme.com |
 | Discussions | [GitHub Discussions](https://github.com/UniteAndCreateForLife/hal-supreme-community/discussions) |
+| Discord | [https://discord.gg/GnufdBbyg](https://discord.gg/GnufdBbyg) |
 
 ## What HAL is
 
 HAL SUPREME helps you search, create, code, and collaborate. Modes include:
 
-- **Fast** â€” quick answers and lightweight tasks
-- **Build** â€” coding and project work
-- **Expert** â€” deeper reasoning
-- **Council** â€” multi-perspective deliberation
+- **Fast** — quick answers and lightweight tasks
+- **Build** — coding and project work
+- **Expert** — deeper reasoning
+- **Council** — multi-perspective deliberation
 
 Capabilities include **search**, **images**, **sandbox**, **voice**, **MCP**, and **peers** (OpenAI-compatible federation).
 
@@ -29,15 +30,16 @@ Capabilities include **search**, **images**, **sandbox**, **voice**, **MCP**, an
 3. Open a [Discussion](https://github.com/UniteAndCreateForLife/hal-supreme-community/discussions) to ask questions or share ideas.
 4. Pick a [`good first issue`](https://github.com/UniteAndCreateForLife/hal-supreme-community/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) if you want to contribute docs or examples.
 5. Follow [CONTRIBUTING.md](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT.md).
+6. Join Discord: [https://discord.gg/GnufdBbyg](https://discord.gg/GnufdBbyg).
 
 **Never paste gateway Bearer tokens, API keys, or private paths into Issues, Discussions, Discord, or PRs.**
 
 ## Docs in this repo
 
-- [Peer join](docs/peer-join.md) â€” point OpenAI-compatible clients at HAL
-- [MCP setup](docs/mcp-setup.md) â€” Cursor / Claude Desktop style config
-- [Community hub](docs/community-hub.md) â€” themes and where to talk
+- [Peer join](docs/peer-join.md) — point OpenAI-compatible clients at HAL
+- [MCP setup](docs/mcp-setup.md) — Cursor / Claude Desktop style config
+- [Community hub](docs/community-hub.md) — themes and where to talk
 
 ## License
 
-MIT â€” see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE).
