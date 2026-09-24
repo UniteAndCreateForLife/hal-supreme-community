@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "peers": [
+    {
+      "id": "friend-ollama",
+      "kind": "openai_compat",
+      "enabled": false,
+      "base_url": "https://peer.example.com/v1",
+      "privacy_class": "REMOTE",
+      "billing_class": "FREE",
+      "credential_env": "HAL_PEER_FRIEND_TOKEN",
+      "notes": "Example outbound peer. Keep enabled=false until health passes. Put secrets only in env."
+    }
+  ]
+}

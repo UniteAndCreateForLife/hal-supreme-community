@@ -1,0 +1,6 @@
+﻿.env
+*.token
+__pycache__/
+secrets/*
+!secrets/README.md
+

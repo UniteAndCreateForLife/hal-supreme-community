@@ -1,8 +1,8 @@
 # HAL SUPREME Community
 
-**Public community hub** for [HAL SUPREME](https://halsupreme.com) — docs, peer join, MCP setup, and good first issues.
+**Public community hub** for [HAL SUPREME](https://halsupreme.com) ï¿½ docs, peer join, MCP setup, and good first issues.
 
-HAL SUPREME is a free, community-friendly AI companion and creator stack. This repository is for **documentation, examples, and onboarding** — not the private product monorepo.
+HAL SUPREME is a free, community-friendly AI companion and creator stack. This repository is for **documentation, examples, and onboarding** ï¿½ not the private product monorepo.
 
 | | |
 | --- | --- |
@@ -16,10 +16,10 @@ HAL SUPREME is a free, community-friendly AI companion and creator stack. This r
 
 HAL SUPREME helps you search, create, code, and collaborate. Modes include:
 
-- **Fast** — quick answers and lightweight tasks
-- **Build** — coding and project work
-- **Expert** — deeper reasoning
-- **Council** — multi-perspective deliberation
+- **Fast** ï¿½ quick answers and lightweight tasks
+- **Build** ï¿½ coding and project work
+- **Expert** ï¿½ deeper reasoning
+- **Council** ï¿½ multi-perspective deliberation
 
 Capabilities include **search**, **images**, **sandbox**, **voice**, **MCP**, and **peers** (OpenAI-compatible federation).
 
@@ -34,12 +34,28 @@ Capabilities include **search**, **images**, **sandbox**, **voice**, **MCP**, an
 
 **Never paste gateway Bearer tokens, API keys, or private paths into Issues, Discussions, Discord, or PRs.**
 
+## Self-host
+
+Run your own OpenAI-compatible **HAL Model Gateway** with Docker (cloud-first; no local Ollama required):
+
+```bash
+git clone https://github.com/UniteAndCreateForLife/hal-supreme-community.git
+cd hal-supreme-community/docker/model-gateway
+python3 prepare-context.py
+cp .env.example .env   # add GROQ_API_KEY (or another remote) + optional HAL_GATEWAY_TOKEN
+mkdir -p secrets && openssl rand -base64 32 > secrets/hal_gateway_token && chmod 600 secrets/hal_gateway_token
+docker compose up --build -d
+curl -fsS http://127.0.0.1:8767/health
+```
+
+Full guide: [docs/DOCKER_GATEWAY.md](docs/DOCKER_GATEWAY.md) Â· Pack: [docker/model-gateway/](docker/model-gateway/) Â· Site: https://halsupreme.com/self-host.html
+
 ## Docs in this repo
 
-- [Peer join](docs/peer-join.md) — point OpenAI-compatible clients at HAL
-- [MCP setup](docs/mcp-setup.md) — Cursor / Claude Desktop style config
-- [Community hub](docs/community-hub.md) — themes and where to talk
+- [Peer join](docs/peer-join.md) ï¿½ point OpenAI-compatible clients at HAL
+- [MCP setup](docs/mcp-setup.md) ï¿½ Cursor / Claude Desktop style config
+- [Community hub](docs/community-hub.md) ï¿½ themes and where to talk
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT ï¿½ see [LICENSE](LICENSE).

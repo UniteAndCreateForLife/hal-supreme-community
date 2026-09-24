@@ -1,0 +1,524 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "nvidia-nim-free/z-ai/glm-5.1",
+  "provider": {
+    "groq-free": {
+      "name": "Groq (free tier)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.groq.com/openai/v1",
+        "apiKey": "$GROQ_API_KEY"
+      },
+      "models": {
+        "openai/gpt-oss-120b": {
+          "name": "Groq GPT-OSS 120B",
+          "tool_call": true,
+          "attachment": false
+        },
+        "qwen/qwen3.8-27b": {
+          "name": "Groq Qwen3.8 27B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "cerebras-free": {
+      "name": "Cerebras (free tier)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.cerebras.ai/v1",
+        "apiKey": "$CEREBRAS_API_KEY"
+      },
+      "models": {
+        "gpt-oss-120b": {
+          "name": "Cerebras GPT-OSS 120B",
+          "tool_call": true,
+          "attachment": false
+        },
+        "zai-glm-4.7": {
+          "name": "Cerebras GLM-4.7",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "openrouter-free": {
+      "name": "OpenRouter (free tier)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://openrouter.ai/api/v1",
+        "apiKey": "${OPENROUTER_API_KEY}"
+      },
+      "models": {
+        "cohere/north-mini-code:free": {
+          "name": "Cohere North Mini Code (free) - thin agentic coder",
+          "tool_call": true,
+          "attachment": false
+        },
+        "poolside/laguna-xs-2.1:free": {
+          "name": "Poolside Laguna XS 2.1 (free) - fast coding",
+          "tool_call": true,
+          "attachment": false
+        },
+        "nvidia/nemotron-3-ultra-550b-a55b:free": {
+          "name": "Nemotron 3 Ultra 550B (free) - reviewer",
+          "tool_call": true,
+          "attachment": false
+        },
+        "openrouter/free": {
+          "name": "OpenRouter Free Router (emergency fallback)",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "nvidia-nim-free": {
+      "name": "NVIDIA NIM (free eval)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://integrate.api.nvidia.com/v1",
+        "apiKey": "$NVIDIA_API_KEY"
+      },
+      "models": {
+        "z-ai/glm-5.1": {
+          "name": "NIM GLM-5.1",
+          "tool_call": true,
+          "attachment": false
+        },
+        "qwen/qwen3.5-397b-a17b": {
+          "name": "NIM Qwen3.5 397B",
+          "tool_call": true,
+          "attachment": false
+        },
+        "nvidia/llama-3.3-70b-instruct": {
+          "name": "NIM Llama 3.3 70B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "mistral-free": {
+      "name": "Mistral (free exp tier)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.mistral.ai/v1",
+        "apiKey": "$MISTRAL_API_KEY"
+      },
+      "models": {
+        "mistral-large-latest": {
+          "name": "Mistral Large 3",
+          "tool_call": true,
+          "attachment": false
+        },
+        "codestral-latest": {
+          "name": "Codestral",
+          "tool_call": true,
+          "attachment": false
+        },
+        "devstral-small": {
+          "name": "Devstral Small",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "github-models-free": {
+      "name": "GitHub Models (free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://models.github.ai/inference",
+        "apiKey": "$GITHUB_TOKEN"
+      },
+      "models": {
+        "gpt-4o": {
+          "name": "GitHub GPT-4o",
+          "tool_call": true,
+          "attachment": false
+        },
+        "gpt-4.1": {
+          "name": "GitHub GPT-4.1",
+          "tool_call": true,
+          "attachment": false
+        },
+        "meta/llama-3.3-70b-instruct": {
+          "name": "GitHub Llama 3.3 70B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "huggingface-free": {
+      "name": "Hugging Face (free router)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://router.huggingface.co/v1",
+        "apiKey": "$HUGGINGFACE_API_KEY"
+      },
+      "models": {
+        "deepseek-ai/DeepSeek-V3.2": {
+          "name": "HF DeepSeek V3.2",
+          "tool_call": true,
+          "attachment": false
+        },
+        "moonshotai/Kimi-K2.6": {
+          "name": "HF Kimi K2.6",
+          "tool_call": true,
+          "attachment": false
+        },
+        "Qwen/Qwen3-235B-A22B": {
+          "name": "HF Qwen3 235B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "deepinfra-free": {
+      "name": "DeepInfra (free credits)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.deepinfra.com/v1/openai",
+        "apiKey": "$DEEPINFRA_API_KEY"
+      },
+      "models": {
+        "meta-llama/Llama-3.3-70B-Instruct": {
+          "name": "DeepInfra Llama 3.3 70B",
+          "tool_call": true,
+          "attachment": false
+        },
+        "deepseek-ai/DeepSeek-V3": {
+          "name": "DeepInfra DeepSeek V3",
+          "tool_call": true,
+          "attachment": false
+        },
+        "Qwen/Qwen2.5-72B-Instruct": {
+          "name": "DeepInfra Qwen2.5 72B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "sambanova-free": {
+      "name": "SambaNova (free tier)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.sambanova.ai/v1",
+        "apiKey": "$SAMBANOVA_API_KEY"
+      },
+      "models": {
+        "meta-llama/Llama-3.3-70B-Instruct": {
+          "name": "SambaNova Llama 3.3 70B",
+          "tool_call": true,
+          "attachment": false
+        },
+        "Qwen/Qwen3-32B": {
+          "name": "SambaNova Qwen3 32B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "llm7-free": {
+      "name": "LLM7.io (anon free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.llm7.io/v1",
+        "apiKey": "not-needed"
+      },
+      "models": {
+        "deepseek-r1-0528": {
+          "name": "LLM7 DeepSeek R1",
+          "tool_call": true,
+          "attachment": false
+        },
+        "deepseek-v3-0324": {
+          "name": "LLM7 DeepSeek V3",
+          "tool_call": true,
+          "attachment": false
+        },
+        "gpt-oss-120b": {
+          "name": "LLM7 GPT-OSS 120B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "cloudflare-free": {
+      "name": "Cloudflare Workers AI (free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.cloudflare.com/client/v4/accounts/$CF_ACCOUNT_ID/ai/v1",
+        "apiKey": "$CLOUDFLARE_API_TOKEN"
+      },
+      "models": {
+        "@cf/meta/llama-3.3-70b-instruct": {
+          "name": "CF Llama 3.3 70B",
+          "tool_call": true,
+          "attachment": false
+        },
+        "@cf/moonshotai/kimi-k2": {
+          "name": "CF Kimi K2",
+          "tool_call": true,
+          "attachment": false
+        },
+        "@cf/google/gemma-4-12b-it": {
+          "name": "CF Gemma 4 12B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "pollinations-free": {
+      "name": "Pollinations (anon free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://text.pollinations.ai/v1",
+        "apiKey": "not-needed"
+      },
+      "models": {
+        "openai-large": {
+          "name": "Pollinations OpenAI Large",
+          "tool_call": true,
+          "attachment": false
+        },
+        "gpt-oss-20b": {
+          "name": "Pollinations GPT-OSS 20B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "opencode-zen-free": {
+      "name": "OpenCode Zen (anon free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://opencode.ai/zen/v1",
+        "apiKey": "not-needed"
+      },
+      "models": {
+        "deepseek-v4-flash": {
+          "name": "Zen DeepSeek V4 Flash",
+          "tool_call": true,
+          "attachment": false
+        },
+        "nemotron-3-ultra": {
+          "name": "Zen Nemotron 3 Ultra",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "ollama-cloud-free": {
+      "name": "Ollama Cloud (free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.ollama.com/v1",
+        "apiKey": "$OLLAMACLOUD_API_KEY"
+      },
+      "models": {
+        "glm-4.7": {
+          "name": "OllamaCloud GLM-4.7",
+          "tool_call": true,
+          "attachment": false
+        },
+        "kimi-k2": {
+          "name": "OllamaCloud Kimi K2",
+          "tool_call": true,
+          "attachment": false
+        },
+        "gpt-oss-120b": {
+          "name": "OllamaCloud GPT-OSS 120B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "zai-free": {
+      "name": "Z.ai / Zhipu (free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://open.bigmodel.cn/api/paas/v4",
+        "apiKey": "$ZAI_API_KEY"
+      },
+      "models": {
+        "glm-4.7": {
+          "name": "Z.ai GLM-4.7",
+          "tool_call": true,
+          "attachment": false
+        },
+        "glm-4.7-flash": {
+          "name": "Z.ai GLM-4.7 Flash",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "xai-free": {
+      "name": "xAI Grok (free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.x.ai/v1",
+        "apiKey": "$XAI_API_KEY"
+      },
+      "models": {
+        "grok-3-mini": {
+          "name": "xAI Grok 3 Mini",
+          "tool_call": true,
+          "attachment": false
+        },
+        "grok-2": {
+          "name": "xAI Grok 2",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "glhf-free": {
+      "name": "Glhf.chat (free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://glhf.chat/api/openai/v1",
+        "apiKey": "$GLHF_API_KEY"
+      },
+      "models": {
+        "meta-llama/Meta-Llama-3.1-70B-Instruct": {
+          "name": "Glhf Llama 3.1 70B",
+          "tool_call": true,
+          "attachment": false
+        },
+        "mistralai/Mixtral-8x7B-Instruct-v0.1": {
+          "name": "Glhf Mixtral 8x7B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "chutes-free": {
+      "name": "Chutes.ai (free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.chutes.ai/v1",
+        "apiKey": "$CHUTES_API_KEY"
+      },
+      "models": {
+        "deepseek-ai/DeepSeek-R1": {
+          "name": "Chutes DeepSeek R1",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "cohere-free": {
+      "name": "Cohere (free tier)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.cohere.ai/compatibility/v1",
+        "apiKey": "${COHERE_API_KEY}"
+      },
+      "models": {
+        "command-a-03-2025": {
+          "name": "Cohere Command A 03-2025",
+          "tool_call": true,
+          "attachment": false
+        },
+        "command-a-plus-05-2026": {
+          "name": "Cohere Command A Plus 05-2026",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "ovh-free": {
+      "name": "OVHcloud AI (anon free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://oai.endpoints.kepler.ai.cloud.ovh.net/v1",
+        "apiKey": "not-needed"
+      },
+      "models": {
+        "qwen3.5-397b-a17b": {
+          "name": "OVH Qwen3.5 397B",
+          "tool_call": true,
+          "attachment": false
+        },
+        "llama-3.3-70b-instruct": {
+          "name": "OVH Llama 3.3 70B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "kilo-free": {
+      "name": "Kilo Code (anon :free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.kilo.ai/api/gateway/v1",
+        "apiKey": "not-needed"
+      },
+      "models": {
+        "kilo:free": {
+          "name": "Kilo Free Route",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "nebius-free": {
+      "name": "Nebius (free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.studio.nebius.com/v1",
+        "apiKey": "$NEBIUS_API_KEY"
+      },
+      "models": {
+        "meta-llama/Llama-3.3-70B-Instruct": {
+          "name": "Nebius Llama 3.3 70B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "siliconflow-free": {
+      "name": "SiliconFlow (free)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.siliconflow.cn/v1",
+        "apiKey": "$SILICONFLOW_API_KEY"
+      },
+      "models": {
+        "deepseek-ai/DeepSeek-V3": {
+          "name": "SiliconFlow DeepSeek V3",
+          "tool_call": true,
+          "attachment": false
+        },
+        "Qwen/Qwen3-235B-A22B": {
+          "name": "SiliconFlow Qwen3 235B",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    },
+    "together-free": {
+      "name": "Together AI (free credits)",
+      "npm": "@ai-sdk/openai-compatible",
+      "options": {
+        "baseURL": "https://api.together.xyz/v1",
+        "apiKey": "$TOGETHER_API_KEY"
+      },
+      "models": {
+        "meta-llama/Llama-3.3-70B-Instruct-Turbo": {
+          "name": "Together Llama 3.3 70B",
+          "tool_call": true,
+          "attachment": false
+        },
+        "deepseek-ai/DeepSeek-V3": {
+          "name": "Together DeepSeek V3",
+          "tool_call": true,
+          "attachment": false
+        }
+      }
+    }
+  },
+  "agent": {},
+  "mode": {},
+  "username": "jakob101"
+}

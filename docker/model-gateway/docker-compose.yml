@@ -1,0 +1,66 @@
+services:
+  gateway:
+    build:
+      context: ./context
+      dockerfile: Dockerfile
+    image: hal-model-gateway:latest
+    container_name: hal-model-gateway
+    restart: unless-stopped
+    ports:
+      - "${HAL_GATEWAY_HOST_PORT:-8767}:8766"
+    environment:
+      HAL_CLOUD_FIRST: "${HAL_CLOUD_FIRST:-1}"
+      HAL_ROOT: /app
+      HAL_OPENCODE_CONFIG: /app/opencode_config.json
+      HAL_PEERS_CONFIG: /app/config/peers.json
+      HAL_GATEWAY_IMAGE_DIR: /app/data/gateway_images
+      HAL_PUBLIC_API_BASE: "${HAL_PUBLIC_API_BASE:-https://api.halsupreme.com}"
+      HAL_HOST: 0.0.0.0
+      PORT: 8766
+      HAL_GATEWAY_TOKEN: "${HAL_GATEWAY_TOKEN:-}"
+      HAL_GATEWAY_TOKEN_FILE: /run/secrets/hal_gateway_token
+      VOICES_DIR: /voices
+      GROQ_API_KEY: "${GROQ_API_KEY:-}"
+      OPENROUTER_API_KEY: "${OPENROUTER_API_KEY:-}"
+      CEREBRAS_API_KEY: "${CEREBRAS_API_KEY:-}"
+      CLOUDFLARE_API_TOKEN: "${CLOUDFLARE_API_TOKEN:-}"
+      CLOUDFLARE_ACCOUNT_ID: "${CLOUDFLARE_ACCOUNT_ID:-}"
+      HUGGINGFACE_API_KEY: "${HUGGINGFACE_API_KEY:-}"
+      GITHUB_TOKEN: "${GITHUB_TOKEN:-}"
+      XAI_API_KEY: "${XAI_API_KEY:-}"
+      NVIDIA_API_KEY: "${NVIDIA_API_KEY:-}"
+      MISTRAL_API_KEY: "${MISTRAL_API_KEY:-}"
+      COHERE_API_KEY: "${COHERE_API_KEY:-}"
+      TOGETHER_API_KEY: "${TOGETHER_API_KEY:-}"
+      DEEPINFRA_API_KEY: "${DEEPINFRA_API_KEY:-}"
+      SAMBANOVA_API_KEY: "${SAMBANOVA_API_KEY:-}"
+      NEBIUS_API_KEY: "${NEBIUS_API_KEY:-}"
+      SILICONFLOW_API_KEY: "${SILICONFLOW_API_KEY:-}"
+    env_file:
+      - path: .env
+        required: false
+    volumes:
+      - gateway_data:/app/data
+      # Optional Piper voices (~240MB). Uncomment if you have ONNX voices locally:
+      # - ${HAL_VOICES_HOST_PATH:-./voices}:/voices:ro
+    secrets:
+      - source: hal_gateway_token
+        target: hal_gateway_token
+        uid: "10001"
+        gid: "10001"
+        mode: 0400
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://127.0.0.1:8766/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+secrets:
+  # openssl rand -base64 32 > ./secrets/hal_gateway_token && chmod 600 ./secrets/hal_gateway_token
+  # Or set HAL_GATEWAY_TOKEN in .env and keep a dummy file at this path for Compose.
+  hal_gateway_token:
+    file: ${HAL_GATEWAY_TOKEN_HOST_FILE:-./secrets/hal_gateway_token}
+
+volumes:
+  gateway_data:
