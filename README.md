@@ -1,12 +1,15 @@
 # HAL SUPREME Community
 
-**Public community hub** for [HAL SUPREME](https://halsupreme.com) � docs, peer join, MCP setup, and good first issues.
+**Public community hub** for [HAL SUPREME](https://halsupreme.com) — docs, peer join, MCP setup, Discussions, and good first issues.
 
-HAL SUPREME is a free, community-friendly AI companion and creator stack. This repository is for **documentation, examples, and onboarding** � not the private product monorepo.
+HAL SUPREME is a community-friendly AI companion and creator stack. This repository is for **documentation, examples, onboarding, and discussion** — not the private product monorepo.
 
 | | |
 | --- | --- |
 | Product | https://halsupreme.com |
+| Public engineering portfolio | https://github.com/UniteAndCreateForLife/HAL_SUPREME/blob/main/PORTFOLIO.md |
+| Contributor roadmap | https://github.com/UniteAndCreateForLife/HAL_SUPREME/blob/main/docs/COMMUNITY_ROADMAP.md |
+| Work with HAL | https://github.com/UniteAndCreateForLife/HAL_SUPREME/blob/main/docs/WORK_WITH_HAL.md |
 | Peer join | https://halsupreme.com/peers.html |
 | API | https://api.halsupreme.com |
 | Discussions | [GitHub Discussions](https://github.com/UniteAndCreateForLife/hal-supreme-community/discussions) |
@@ -14,25 +17,55 @@ HAL SUPREME is a free, community-friendly AI companion and creator stack. This r
 
 ## What HAL is
 
-HAL SUPREME helps you search, create, code, and collaborate. Modes include:
+HAL SUPREME helps with search, creation, coding, tool use, multimodal workflows, and collaboration. Public engineering work currently focuses on durable AI agents, MCP/tool integrations, local/private AI, evidence and provenance, evaluation, and reproducible demos.
 
-- **Fast** � quick answers and lightweight tasks
-- **Build** � coding and project work
-- **Expert** � deeper reasoning
-- **Council** � multi-perspective deliberation
+Modes include:
+
+- **Fast** — quick answers and lightweight tasks
+- **Build** — coding and project work
+- **Expert** — deeper reasoning
+- **Council** — multi-perspective deliberation
 
 Capabilities include **search**, **images**, **sandbox**, **voice**, **MCP**, and **peers** (OpenAI-compatible federation).
 
 ## Join the community
 
-1. Star or watch this repo for updates.
+1. Read the [public engineering portfolio](https://github.com/UniteAndCreateForLife/HAL_SUPREME/blob/main/PORTFOLIO.md) to see what is actually verified.
 2. Read [docs/peer-join.md](docs/peer-join.md) and [docs/mcp-setup.md](docs/mcp-setup.md).
-3. Open a [Discussion](https://github.com/UniteAndCreateForLife/hal-supreme-community/discussions) to ask questions or share ideas.
-4. Pick a [`good first issue`](https://github.com/UniteAndCreateForLife/hal-supreme-community/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) if you want to contribute docs or examples.
-5. Follow [CONTRIBUTING.md](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT.md).
-6. Join Discord: [https://discord.gg/GnufdBbyg](https://discord.gg/GnufdBbyg).
+3. Open a [Discussion](https://github.com/UniteAndCreateForLife/hal-supreme-community/discussions) to ask questions, share a reproduction, or propose interoperability work.
+4. Pick a [good first issue](https://github.com/UniteAndCreateForLife/hal-supreme-community/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) if you want to contribute docs or examples.
+5. For deeper engineering contributions, use the main repo's [CONTRIBUTING.md](https://github.com/UniteAndCreateForLife/HAL_SUPREME/blob/main/CONTRIBUTING.md) and [community roadmap](https://github.com/UniteAndCreateForLife/HAL_SUPREME/blob/main/docs/COMMUNITY_ROADMAP.md).
+6. Follow this repo's [CONTRIBUTING.md](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md).
+7. Join Discord: [https://discord.gg/GnufdBbyg](https://discord.gg/GnufdBbyg).
 
-**Never paste gateway Bearer tokens, API keys, or private paths into Issues, Discussions, Discord, or PRs.**
+**Never paste gateway Bearer tokens, API keys, private paths, OTPs, hidden/system prompts, or confidential client data into Issues, Discussions, Discord, or PRs.**
+
+## Ways to collaborate
+
+### Contribute
+
+Good contribution areas include:
+- MCP interoperability and examples;
+- first-run documentation;
+- local/private AI setup;
+- reproducibility checks;
+- evaluation and evidence fixtures;
+- peer/federation usability.
+
+### Research / engineering collaboration
+
+For agent reliability, evidence/citation validation, provider routing, provenance, multimodal production, or bounded automation work, start with the main HAL engineering repository:
+
+https://github.com/UniteAndCreateForLife/HAL_SUPREME
+
+### Paid engineering
+
+HAL also takes bounded engineering engagements where the first milestone can be tested and reviewed.
+
+See:
+https://github.com/UniteAndCreateForLife/HAL_SUPREME/blob/main/docs/WORK_WITH_HAL.md
+
+Do not post confidential commercial details publicly; use the contact route on https://halsupreme.com.
 
 ## Self-host
 
@@ -52,10 +85,10 @@ Full guide: [docs/DOCKER_GATEWAY.md](docs/DOCKER_GATEWAY.md) · Pack: [docker/mo
 
 ## Docs in this repo
 
-- [Peer join](docs/peer-join.md) � point OpenAI-compatible clients at HAL
-- [MCP setup](docs/mcp-setup.md) � Cursor / Claude Desktop style config
-- [Community hub](docs/community-hub.md) � themes and where to talk
+- [Peer join](docs/peer-join.md) — point OpenAI-compatible clients at HAL
+- [MCP setup](docs/mcp-setup.md) — Cursor / Claude Desktop style config
+- [Community hub](docs/community-hub.md) — themes and where to talk
 
 ## License
 
-MIT � see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE).
