@@ -4,11 +4,11 @@ Short pointer to where HAL SUPREME community work happens.
 
 ## Themes (v1)
 
-- **Docs** — peer join, MCP, onboarding clarity
-- **Peers** — OpenAI-compatible federation examples (FREE only)
-- **MCP** — host config templates with placeholders
-- **Good first issues** — typos, FAQ, accessibility, copy-paste curl blocks
-- **Discussions** — questions, ideas, show-and-tell (no secrets)
+- **Docs** â€” peer join, MCP, onboarding clarity
+- **Peers** â€” OpenAI-compatible federation examples (FREE only)
+- **MCP** â€” host config templates with placeholders
+- **Good first issues** â€” typos, FAQ, accessibility, copy-paste curl blocks
+- **Discussions** â€” questions, ideas, show-and-tell (no secrets)
 
 ## Where to go
 

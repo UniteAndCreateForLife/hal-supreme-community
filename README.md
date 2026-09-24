@@ -1,8 +1,8 @@
 # HAL SUPREME Community
 
-**Public community hub** for [HAL SUPREME](https://halsupreme.com) � docs, peer join, MCP setup, and good first issues.
+**Public community hub** for [HAL SUPREME](https://halsupreme.com) — docs, peer join, MCP setup, and good first issues.
 
-HAL SUPREME is a free, community-friendly AI companion and creator stack. This repository is for **documentation, examples, and onboarding** � not the private product monorepo.
+HAL SUPREME is a free, community-friendly AI companion and creator stack. This repository is for **documentation, examples, and onboarding** — not the private product monorepo.
 
 | | |
 | --- | --- |
@@ -16,10 +16,10 @@ HAL SUPREME is a free, community-friendly AI companion and creator stack. This r
 
 HAL SUPREME helps you search, create, code, and collaborate. Modes include:
 
-- **Fast** � quick answers and lightweight tasks
-- **Build** � coding and project work
-- **Expert** � deeper reasoning
-- **Council** � multi-perspective deliberation
+- **Fast** — quick answers and lightweight tasks
+- **Build** — coding and project work
+- **Expert** — deeper reasoning
+- **Council** — multi-perspective deliberation
 
 Capabilities include **search**, **images**, **sandbox**, **voice**, **MCP**, and **peers** (OpenAI-compatible federation).
 
@@ -52,10 +52,10 @@ Full guide: [docs/DOCKER_GATEWAY.md](docs/DOCKER_GATEWAY.md) · Pack: [docker/mo
 
 ## Docs in this repo
 
-- [Peer join](docs/peer-join.md) � point OpenAI-compatible clients at HAL
-- [MCP setup](docs/mcp-setup.md) � Cursor / Claude Desktop style config
-- [Community hub](docs/community-hub.md) � themes and where to talk
+- [Peer join](docs/peer-join.md) — point OpenAI-compatible clients at HAL
+- [MCP setup](docs/mcp-setup.md) — Cursor / Claude Desktop style config
+- [Community hub](docs/community-hub.md) — themes and where to talk
 
 ## License
 
-MIT � see [LICENSE](LICENSE).
+MIT — see [LICENSE](LICENSE).
