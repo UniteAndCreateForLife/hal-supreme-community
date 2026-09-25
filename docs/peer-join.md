@@ -3,7 +3,9 @@
 **Audience:** Another OpenAI-compatible client, MCP host, or someone adding an outbound peer.  
 **Cost:** FREE examples only — patterns below do not require paid OpenAI/Anthropic keys.
 
-HAL exposes an OpenAI-compatible gateway at `https://api.halsupreme.com`. Auth is a **Bearer token issued by maintainers**. Never paste real tokens in Discord, Issues, Discussions, or PRs — use `<HAL_GATEWAY_TOKEN>`.
+HAL exposes an OpenAI-compatible gateway at `https://api.halsupreme.com`. Auth is a **Bearer token issued by maintainers** — you cannot generate one yourself. To request a token, ask in [GitHub Discussions](https://github.com/UniteAndCreateForLife/hal-supreme-community/discussions) or [Discord](https://discord.gg/GnufdBbyg); a maintainer will send it to you privately (never in a public channel).
+
+**Never paste real tokens in Discord, Issues, Discussions, or PRs.** In every example below, `<HAL_GATEWAY_TOKEN>` is a placeholder — swap in the token a maintainer gave you, and keep it out of anything public.
 
 Public peer page: https://halsupreme.com/peers.html
 
@@ -60,6 +62,15 @@ curl -s https://api.halsupreme.com/v1/chat/completions \
 ```
 
 Without a Bearer token, `/v1/peers` and `/v1/models` return **401**.
+
+### Troubleshooting a 401 on `/v1/peers` or `/v1/models`
+
+| Symptom | Likely cause | Fix |
+| --- | --- | --- |
+| `401` on every request | Missing `Authorization` header | Add `Authorization: Bearer <HAL_GATEWAY_TOKEN>` to the request |
+| `401` even though a token is set | `<HAL_GATEWAY_TOKEN>` placeholder wasn't replaced, or the real token has stray whitespace/a newline from copy-paste | Swap in your real token exactly as given, trimmed of extra whitespace |
+| Worked before, now `401` | Token was rotated or revoked | Ask a maintainer for a fresh token (see above) |
+| `/v1/models` works but `/v1/peers` doesn't (or vice versa) | Both routes use the same Bearer token — a mismatch usually means the header wasn't copied to the second request | Reuse the exact `Authorization` header from a request that worked |
 
 ### MCP (Cursor / Claude Desktop)
 
