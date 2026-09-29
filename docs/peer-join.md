@@ -3,8 +3,7 @@
 **Audience:** Another OpenAI-compatible client, MCP host, or someone adding an outbound peer.  
 **Cost:** FREE examples only — patterns below do not require paid OpenAI/Anthropic keys.
 
-HAL exposes an OpenAI-compatible gateway at `https://api.halsupreme.com`. Auth is a **Bearer token issued by maintainers**. Never paste real tokens in Discord, Issues, Discussions, or PRs — use `<HAL_GATEWAY_TOKEN>`.
-
+HAL exposes an OpenAI-compatible gateway at [https://api.halsupreme.com](https://api.halsupreme.com). Access requires a Bearer token issued by maintainers. Never share real tokens in Discord, GitHub issues, or PRs—always use the placeholder <HAL_GATEWAY_TOKEN>.
 Public peer page: https://halsupreme.com/peers.html
 
 ---
