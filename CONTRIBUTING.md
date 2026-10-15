@@ -1,4 +1,4 @@
-﻿# Contributing to HAL SUPREME Community
+# Contributing to HAL SUPREME Community
 
 Thanks for helping HAL SUPREME grow as a **free, community-led** project. This repo is for **docs, examples, and safe website-join slices** — not the full private HAL monorepo.
 
