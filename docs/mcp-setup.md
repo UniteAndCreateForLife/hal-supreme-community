@@ -1,4 +1,4 @@
-﻿# MCP setup for HAL SUPREME
+# MCP setup for HAL SUPREME
 
 Use this when connecting Cursor, Claude Desktop, or another MCP host to HAL.
 

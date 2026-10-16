@@ -1,4 +1,4 @@
-﻿# Join HAL as a peer (FREE)
+# Join HAL as a peer (FREE)
 
 **Audience:** Another OpenAI-compatible client, MCP host, or someone adding an outbound peer.  
 **Cost:** FREE examples only — patterns below do not require paid OpenAI/Anthropic keys.
