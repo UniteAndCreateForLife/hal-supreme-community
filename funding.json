@@ -5,7 +5,7 @@
     "role": "owner",
     "name": "UniteAndCreateForLife (HAL SUPREME)",
     "email": "opportunities@halsupreme.com",
-    "description": "Jakob William Hedrich, an independent AI engineer, builds HAL SUPREME under the name UniteAndCreateForLife. HAL SUPREME is a local-first, provider-neutral AI agent stack: multi-agent orchestration, model routing, memory, evaluation and multimodal workflows. Website: https://halsupreme.com. The project is fiscally sponsored by IFERS (501(c)(3)).",
+    "description": "Jakob William Hedrich, an independent AI engineer, builds HAL SUPREME under the name UniteAndCreateForLife. HAL SUPREME is a local-first, provider-neutral AI agent stack: multi-agent orchestration, model routing, memory, evaluation and multimodal workflows. Website: https://halsupreme.com. Fiscal sponsorship with IFERS (a 501(c)(3)) is in progress.",
     "webpageUrl": {
       "url": "https://github.com/UniteAndCreateForLife/hal-supreme-community"
     }
@@ -43,7 +43,7 @@
         "guid": "contact-email",
         "type": "other",
         "address": "opportunities@halsupreme.com",
-        "description": "Email to arrange payment (bank transfer or via fiscal sponsor IFERS)."
+        "description": "Email to arrange payment (bank transfer; fiscal sponsorship with IFERS is in progress)."
       }
     ],
     "plans": [
