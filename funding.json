@@ -1,0 +1,76 @@
+{
+  "version": "v1.0.0",
+  "entity": {
+    "type": "individual",
+    "role": "owner",
+    "name": "UniteAndCreateForLife (HAL SUPREME)",
+    "email": "opportunities@halsupreme.com",
+    "description": "Jakob William Hedrich, an independent AI engineer, builds HAL SUPREME under the name UniteAndCreateForLife. HAL SUPREME is a local-first, provider-neutral AI agent stack: multi-agent orchestration, model routing, memory, evaluation and multimodal workflows. Website: https://halsupreme.com. The project is fiscally sponsored by IFERS (501(c)(3)).",
+    "webpageUrl": {
+      "url": "https://github.com/UniteAndCreateForLife/hal-supreme-community"
+    }
+  },
+  "projects": [
+    {
+      "guid": "hal-gateway",
+      "name": "HAL SUPREME Gateway",
+      "description": "An open-source, local-first, provider-neutral agent gateway with transparent tool calls, provenance and replay records, checkpointing and human review gates, so independent users can run and audit AI workflows on their own hardware or self-host it. Includes a one-click Docker gateway pack. Public site: https://halsupreme.com.",
+      "webpageUrl": {
+        "url": "https://github.com/UniteAndCreateForLife/hal-supreme-community"
+      },
+      "repositoryUrl": {
+        "url": "https://github.com/UniteAndCreateForLife/hal-supreme-community"
+      },
+      "licenses": [
+        "spdx:MIT"
+      ],
+      "tags": [
+        "artificial-intelligence",
+        "machine-learning",
+        "developer-tools",
+        "privacy",
+        "llm",
+        "agents",
+        "self-hosted",
+        "docker",
+        "python"
+      ]
+    }
+  ],
+  "funding": {
+    "channels": [
+      {
+        "guid": "contact-email",
+        "type": "other",
+        "address": "opportunities@halsupreme.com",
+        "description": "Email to arrange payment (bank transfer or via fiscal sponsor IFERS)."
+      }
+    ],
+    "plans": [
+      {
+        "guid": "dev-hosting-yearly",
+        "status": "active",
+        "name": "Development and hosting",
+        "description": "Yearly support for gateway development (provenance format, security, docs, accessibility) and hosting the public gateway and open-weight model evaluation off a single home PC.",
+        "amount": 30000,
+        "currency": "USD",
+        "frequency": "yearly",
+        "channels": [
+          "contact-email"
+        ]
+      },
+      {
+        "guid": "any-amount",
+        "status": "active",
+        "name": "Any amount",
+        "description": "One-time contributions of any size.",
+        "amount": 0,
+        "currency": "USD",
+        "frequency": "one-time",
+        "channels": [
+          "contact-email"
+        ]
+      }
+    ]
+  }
+}
