@@ -1,0 +1,65 @@
+name: Contributor task
+description: Propose a bounded task that an outside contributor can claim
+title: "[Task] "
+labels:
+  - help wanted
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this for public-safe, reviewable work. Do not include secrets, private paths, credentials, hidden prompts, or confidential client data.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Holographic UI / accessibility
+        - Reliability / evals
+        - Creator / media
+        - Interoperability / MCP
+        - Documentation / onboarding
+        - Community / growth
+        - Research
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What needs to improve, and who benefits?
+    validations:
+      required: true
+  - type: textarea
+    id: deliverable
+    attributes:
+      label: Deliverable
+      description: What concrete artifact or change should exist when this is done?
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Provide a checklist of observable pass/fail conditions.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence / test plan
+      description: Screenshots, test commands, fixtures, benchmarks, or review steps that should prove completion.
+    validations:
+      required: true
+  - type: checkboxes
+    id: safety
+    attributes:
+      label: Public-safety check
+      options:
+        - label: This task can be completed without production credentials or private user data.
+          required: true
+        - label: Any external code or media will be treated as untrusted until reviewed.
+          required: true
