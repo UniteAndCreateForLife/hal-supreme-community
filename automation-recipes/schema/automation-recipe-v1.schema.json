@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://halsupreme.com/schemas/community-automation-recipe-v1.schema.json",
+  "title": "HAL Community Automation Recipe V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","recipe_id","title","trigger","execution","permissions","steps","expected_receipts"],
+  "properties": {
+    "schema_version": {"const":"hal.community.automation-recipe.v1"},
+    "recipe_id": {"type":"string","pattern":"^[a-z0-9][a-z0-9._-]{2,120}$"},
+    "title": {"type":"string","minLength":1,"maxLength":200},
+    "description": {"type":"string","maxLength":2000},
+    "trigger": {
+      "type":"object",
+      "additionalProperties": false,
+      "required":["type"],
+      "properties":{
+        "type":{"enum":["schedule.rrule","schedule.interval","event.gmail","event.github","condition.change","condition.threshold","manual"]},
+        "expression":{"type":["string","null"]},
+        "timezone":{"type":["string","null"]},
+        "filter":{"type":["object","null"]}
+      }
+    },
+    "execution": {
+      "type":"object",
+      "additionalProperties":false,
+      "required":["mode","concurrency","quiet_if_no_change"],
+      "properties":{
+        "mode":{"enum":["shadow","canary","active"]},
+        "concurrency":{"enum":["skip_if_running","queue_one","queue_all"]},
+        "quiet_if_no_change":{"type":"boolean"},
+        "retry_limit":{"type":"integer","minimum":0,"maximum":10}
+      }
+    },
+    "permissions": {
+      "type":"object",
+      "additionalProperties":false,
+      "required":["read_scopes","write_scopes","approval_policy"],
+      "properties":{
+        "read_scopes":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+        "write_scopes":{"type":"array","items":{"type":"string"},"uniqueItems":true},
+        "approval_policy":{"enum":["read_only","governed","always_confirm_external"]}
+      }
+    },
+    "steps": {
+      "type":"array","minItems":1,
+      "items":{
+        "type":"object","additionalProperties":false,
+        "required":["id","action"],
+        "properties":{
+          "id":{"type":"string","pattern":"^[a-z0-9._-]+$"},
+          "action":{"type":"string","maxLength":160},
+          "condition":{"type":["string","null"],"maxLength":500},
+          "mutates":{"type":"boolean"},
+          "requires_approval":{"type":"boolean"}
+        }
+      }
+    },
+    "idempotency_key": {"type":"string","maxLength":500},
+    "expected_receipts": {"type":"array","minItems":1,"items":{"type":"string","maxLength":160}},
+    "migration": {
+      "type":"object","additionalProperties":false,
+      "properties":{
+        "source":{"type":"string","maxLength":120},
+        "source_title":{"type":"string","maxLength":200},
+        "state":{"enum":["imported","shadow","canary","takeover_ready","hal_owned"]}
+      }
+    }
+  }
+}

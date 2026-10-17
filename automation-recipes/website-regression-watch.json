@@ -1,0 +1,52 @@
+{
+  "schema_version": "hal.community.automation-recipe.v1",
+  "recipe_id": "hal.website.regression-watch",
+  "title": "Website Regression Watch",
+  "description": "Run public-safe route and UI checks; if a deterministic regression is found, propose a repair job with evidence. Never silently deploy a fix.",
+  "trigger": {
+    "type": "schedule.interval",
+    "expression": "PT6H",
+    "timezone": "America/Chicago",
+    "filter": null
+  },
+  "execution": {
+    "mode": "shadow",
+    "concurrency": "skip_if_running",
+    "quiet_if_no_change": true,
+    "retry_limit": 1
+  },
+  "permissions": {
+    "read_scopes": ["website.public.read","test.synthetic.run"],
+    "write_scopes": ["workgraph.repair_job.propose"],
+    "approval_policy": "governed"
+  },
+  "steps": [
+    {
+      "id": "smoke",
+      "action": "Check canonical public routes and synthetic UI contracts.",
+      "condition": null,
+      "mutates": false,
+      "requires_approval": false
+    },
+    {
+      "id": "compare",
+      "action": "Compare result to last accepted baseline and reject transient/non-deterministic failures.",
+      "condition": null,
+      "mutates": false,
+      "requires_approval": false
+    },
+    {
+      "id": "repair_proposal",
+      "action": "Propose a BLOCKED repair task containing exact failing evidence and acceptance criteria.",
+      "condition": "deterministic_regression == true",
+      "mutates": true,
+      "requires_approval": true
+    }
+  ],
+  "idempotency_key": "hal.website.regression-watch:{baseline_sha}:{failure_signature}",
+  "expected_receipts": [
+    "smoke_result",
+    "baseline_comparison",
+    "repair_proposal_or_no_change"
+  ]
+}
