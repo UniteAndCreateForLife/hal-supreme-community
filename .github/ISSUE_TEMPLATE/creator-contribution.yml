@@ -1,0 +1,63 @@
+name: Creator / media contribution
+description: Propose a public-safe music, video, artwork, motion, or other creator contribution
+title: "[Creator] "
+labels:
+  - creator
+body:
+  - type: dropdown
+    id: type
+    attributes:
+      label: Contribution type
+      options:
+        - Music / audio
+        - Video / animation
+        - Artwork / design
+        - 3D / motion
+        - Writing / voice
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Contribution
+      description: Describe the work and how it could fit HAL.
+    validations:
+      required: true
+  - type: textarea
+    id: ownership
+    attributes:
+      label: Rights / ownership
+      description: State whether you created or control the submitted work and identify any third-party material.
+    validations:
+      required: true
+  - type: dropdown
+    id: remix
+    attributes:
+      label: Remix / derivative permission
+      options:
+        - Listen/display only
+        - Collaboration allowed with approval
+        - Remix allowed with attribution
+        - Noncommercial remix allowed with attribution
+        - License described below
+    validations:
+      required: true
+  - type: textarea
+    id: attribution
+    attributes:
+      label: Required attribution / license notes
+  - type: textarea
+    id: deliverable
+    attributes:
+      label: Deliverable / preview link
+      description: Public link or description of what would be submitted. Do not include private credentials.
+  - type: checkboxes
+    id: attestation
+    attributes:
+      label: Attestation
+      options:
+        - label: I have the right to submit this material for the permission level selected above.
+          required: true
+        - label: I understand submission does not guarantee publication, broadcast, payment, or acceptance.
+          required: true
