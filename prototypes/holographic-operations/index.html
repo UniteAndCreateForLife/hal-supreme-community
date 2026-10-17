@@ -312,6 +312,7 @@ kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius
       <button aria-label="System graph"><span class="ico">⌘</span><small>Graph</small></button>
       <button aria-label="Apps and plugins"><span class="ico">▦</span><small>Apps</small></button>
       <button aria-label="Automations"><span class="ico">⟳</span><small>Auto</small></button>
+      <button aria-label="Compute Fabric"><span class="ico">▤</span><small>Compute</small></button>
       <button aria-label="System Lab"><span class="ico">⌬</span><small>Lab</small></button>
       <button aria-label="Settings"><span class="ico">⚙</span><small>Settings</small></button>
     </nav>
@@ -564,6 +565,60 @@ kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius
         <div class="integration-strip">
           <span>Active 4</span><span>Running 1</span><span>Waiting approval 2</span><span>Shadow migration 3</span>
           <span>No-change runs stay quiet</span><span>idempotent retries</span><span>owner-visible receipts</span>
+        </div>
+      </section>
+
+
+      <section class="panel" style="margin-bottom:14px">
+        <div class="panel-head">
+          <div><div class="eyebrow">Compute Fabric</div><div class="panel-title">GPU / CPU / Inference / Trusted Peers</div></div>
+          <span class="badge">zero-spend first</span>
+        </div>
+        <div class="dock-grid">
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">GPU</div><div><b>Local RTX 2080</b><small>8 GB · owned</small></div><span class="appstatus warn" aria-label="busy"></span></div>
+            <p>Primary local media/inference node. Resource admission prevents HAL from stealing capacity from active work.</p>
+            <div class="appactions"><button>Jobs</button><button>Drain</button><button>Evidence</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">CI</div><div><b>GitHub Actions</b><small>public CPU runners</small></div><span class="appstatus good" aria-label="available"></span></div>
+            <p>Public-safe builds, tests, linting, packaging and cross-platform regression without consuming local CPU.</p>
+            <div class="appactions"><button>Queues</button><button>Workflows</button><button>Limits</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">AI</div><div><b>Free Inference</b><small>Groq + Workers AI</small></div><span class="appstatus good" aria-label="available"></span></div>
+            <p>Rate-limited/usage-bounded inference routes with fail-closed zero-spend policy and provider-truth receipts.</p>
+            <div class="appactions"><button>Routes</button><button>Quota</button><button>Models</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">NB</div><div><b>Notebook GPUs</b><small>Kaggle · Colab · Lightning</small></div><span class="appstatus warn" aria-label="manual or dynamic"></span></div>
+            <p>Free or introductory GPU capacity for larger experiments and Studio handoff bundles; availability is not guaranteed.</p>
+            <div class="appactions"><button>Handoffs</button><button>Quota</button><button>Returns</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">HF</div><div><b>HF ZeroGPU</b><small>public demos</small></div><span class="appstatus good" aria-label="eligible route"></span></div>
+            <p>Shared GPU capacity for bounded Gradio demos and public reproducible examples; grant path tracked separately.</p>
+            <div class="appactions"><button>Spaces</button><button>Grant</button><button>Receipts</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">$</div><div><b>Sponsored Credits</b><small>Runpod / grants</small></div><span class="appstatus warn" aria-label="pending"></span></div>
+            <p>Credit-backed GPU routes stay disabled until provider evidence confirms the exact balance, expiry, and zero-spend boundary.</p>
+            <div class="appactions"><button>Applications</button><button>Balances</button><button>Policies</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">NET</div><div><b>Trusted Peer Nodes</b><small>opt-in machines</small></div><span class="appstatus off" aria-label="not connected"></span></div>
+            <p>Future outbound-only workers advertise CPU/GPU capacity and pull signed sandboxed jobs with owner resource caps.</p>
+            <div class="appactions"><button>Add node</button><button>Trust</button><button>Policies</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">0$</div><div><b>Cost Guard</b><small>HAL policy</small></div><span class="appstatus good" aria-label="enforced"></span></div>
+            <p>Paid routes remain unavailable unless separately authorized. Free-quota exhaustion fails closed instead of silently billing.</p>
+            <div class="appactions"><button>Rules</button><button>Violations</button><button>Audit</button></div>
+          </article>
+        </div>
+        <div class="integration-strip">
+          <span>local first</span><span>public CI CPU</span><span>free inference</span><span>free/manual GPU</span>
+          <span>sponsored credits</span><span>trusted peers</span><span>paid only by approval</span>
         </div>
       </section>
 
