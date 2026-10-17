@@ -311,6 +311,7 @@ kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius
       <button aria-label="Community Bounties"><span class="ico">✦</span><small>Bounty</small></button>
       <button aria-label="System graph"><span class="ico">⌘</span><small>Graph</small></button>
       <button aria-label="Apps and plugins"><span class="ico">▦</span><small>Apps</small></button>
+      <button aria-label="Automations"><span class="ico">⟳</span><small>Auto</small></button>
       <button aria-label="System Lab"><span class="ico">⌬</span><small>Lab</small></button>
       <button aria-label="Settings"><span class="ico">⚙</span><small>Settings</small></button>
     </nav>
@@ -529,6 +530,40 @@ kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius
           <div class="task"><div><b>Build Together → GitHub → Review → Credit</b><small>Public issue and PR state is mapped into HAL contributor projects; accepted work becomes visible credit and changelog evidence.</small></div><span class="tag">community</span></div>
           <div class="task"><div><b>Chat → Operations → App Dock</b><small>A conversation can create or inspect canonical work; Operations shows execution; App Dock provides the permitted external-system surface.</small></div><span class="tag">workflow</span></div>
           <div class="task"><div><b>System Graph → Incident → System Lab</b><small>Degraded nodes link to evidence, incidents, diagnostics, regression tests, and recommended fixes instead of separate dashboards.</small></div><span class="tag">reliability</span></div>
+          <div class="task"><div><b>Automation → WorkGraph → Builder</b><small>A schedule or event creates canonical work; HAL Builder executes only released scoped jobs and reports tests/evidence back into the same run history.</small></div><span class="tag">automation</span></div>
+        </div>
+      </section>
+
+      <section class="panel" style="margin-bottom:14px">
+        <div class="panel-head">
+          <div><div class="eyebrow">Automation Center</div><div class="panel-title">Schedules, Watches, Builder Jobs & Takeovers</div></div>
+          <span class="badge">HAL canonical</span>
+        </div>
+        <div class="dock-grid">
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">↻</div><div><b>Partner Reply Watch</b><small>Gmail · condition watch</small></div><span class="appstatus good" aria-label="active"></span></div>
+            <p>Consolidates BlueDot + Meta reply watches. Meaningful deltas only. Source migration: ChatGPT → HAL shadow.</p>
+            <div class="appactions"><button>Open</button><button>Run now</button><button>History</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">GPU</div><div><b>Compute Entitlement Watch</b><small>providers · credits · grants</small></div><span class="appstatus warn" aria-label="shadow"></span></div>
+            <p>Provider reconciliation, reply monitoring, expiration checks and lower-frequency program discovery.</p>
+            <div class="appactions"><button>Inspect</button><button>Scopes</button><button>Shadow</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">DEV</div><div><b>HAL Builder</b><small>DevelopmentTeam · WorkGraph</small></div><span class="appstatus warn" aria-label="verification required"></span></div>
+            <p>Released coding jobs execute in isolated workspaces, run tests, emit receipts, and stop at review/promotion gates.</p>
+            <div class="appactions"><button>Queue build</button><button>Workers</button><button>Evidence</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">+</div><div><b>New Automation</b><small>natural language → visible contract</small></div><span class="appstatus good" aria-label="available"></span></div>
+            <p>Describe a recurring or conditional workflow. HAL shows the trigger, scopes, approvals, resources and actions before activation.</p>
+            <div class="appactions"><button>Create</button><button>Templates</button><button>Developer</button></div>
+          </article>
+        </div>
+        <div class="integration-strip">
+          <span>Active 4</span><span>Running 1</span><span>Waiting approval 2</span><span>Shadow migration 3</span>
+          <span>No-change runs stay quiet</span><span>idempotent retries</span><span>owner-visible receipts</span>
         </div>
       </section>
 
