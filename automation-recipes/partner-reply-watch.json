@@ -1,0 +1,61 @@
+{
+  "schema_version": "hal.community.automation-recipe.v1",
+  "recipe_id": "hal.comms.partner-reply-watch",
+  "title": "Partner Reply Watch",
+  "description": "Watch selected partner threads/senders and surface only meaningful new decisions, questions, requests, deadlines, meetings, or funding/program updates.",
+  "trigger": {
+    "type": "event.gmail",
+    "expression": null,
+    "timezone": "America/Chicago",
+    "filter": {
+      "sender_allowlist": ["partner@example.org"],
+      "thread_tags": ["program-name"],
+      "fallback_poll_minutes": 60
+    }
+  },
+  "execution": {
+    "mode": "shadow",
+    "concurrency": "skip_if_running",
+    "quiet_if_no_change": true,
+    "retry_limit": 3
+  },
+  "permissions": {
+    "read_scopes": ["gmail.read.selected_threads"],
+    "write_scopes": ["notification.create"],
+    "approval_policy": "read_only"
+  },
+  "steps": [
+    {
+      "id": "dedupe",
+      "action": "Reject messages already recorded by message/thread evidence.",
+      "condition": null,
+      "mutates": false,
+      "requires_approval": false
+    },
+    {
+      "id": "classify",
+      "action": "Classify whether the new message contains a meaningful decision, question, requested information, meeting, funding/program update, or deadline.",
+      "condition": null,
+      "mutates": false,
+      "requires_approval": false
+    },
+    {
+      "id": "surface",
+      "action": "Create one concise notification only for meaningful new developments.",
+      "condition": "meaningful_delta == true",
+      "mutates": true,
+      "requires_approval": false
+    }
+  ],
+  "idempotency_key": "hal.comms.partner-reply-watch:{message_id}",
+  "expected_receipts": [
+    "message_seen",
+    "classification",
+    "notification_or_no_change"
+  ],
+  "migration": {
+    "source": "chatgpt_automations",
+    "source_title": "BlueDot Grant Reply Watch / Meta Reply Watch",
+    "state": "shadow"
+  }
+}
