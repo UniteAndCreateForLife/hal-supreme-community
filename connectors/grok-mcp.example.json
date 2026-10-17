@@ -1,0 +1,18 @@
+{
+  "_comment": "Public-safe template. Enter the real HAL credential only inside Grok's connector UI or approved secret store; never save it here.",
+  "name": "HAL SUPREME",
+  "type": "custom_mcp",
+  "url": "https://mcp.halsupreme.com/mcp",
+  "authentication": {
+    "type": "bearer",
+    "token": "<ENTER_LOCALLY_NOT_IN_REPO>"
+  },
+  "expected_capabilities": [
+    "HAL status",
+    "allowed workspace projections",
+    "WorkGraph/delegation visibility",
+    "released delegated tasks",
+    "delegated result submission",
+    "governed work proposals"
+  ]
+}
