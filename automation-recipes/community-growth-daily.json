@@ -1,0 +1,80 @@
+{
+  "schema_version": "hal.community.automation-recipe.v1",
+  "recipe_id": "hal.community.daily-growth",
+  "title": "HAL Community Growth",
+  "description": "Once daily, measure real public traction and choose at most one useful community action. Prefer contribution value over promotion.",
+  "trigger": {
+    "type": "schedule.rrule",
+    "expression": "FREQ=DAILY;BYHOUR=9",
+    "timezone": "America/Chicago",
+    "filter": null
+  },
+  "execution": {
+    "mode": "shadow",
+    "concurrency": "skip_if_running",
+    "quiet_if_no_change": true,
+    "retry_limit": 2
+  },
+  "permissions": {
+    "read_scopes": [
+      "github.public.read",
+      "gmail.read.community",
+      "web.public.read",
+      "huggingface.public.read"
+    ],
+    "write_scopes": [
+      "github.issue_or_pr.propose",
+      "artifact.public_safe.create"
+    ],
+    "approval_policy": "governed"
+  },
+  "steps": [
+    {
+      "id": "traction",
+      "action": "Measure repository stars, forks, outside contributors, issue/PR activity, and public demo evidence.",
+      "condition": null,
+      "mutates": false,
+      "requires_approval": false
+    },
+    {
+      "id": "inbound",
+      "action": "Check approved community/collaboration inbox threads for meaningful new replies.",
+      "condition": null,
+      "mutates": false,
+      "requires_approval": false
+    },
+    {
+      "id": "ecosystem",
+      "action": "Inspect current public AI-agent, MCP, local-AI, evaluation, and provenance discussions for a concrete HAL contribution opportunity.",
+      "condition": null,
+      "mutates": false,
+      "requires_approval": false
+    },
+    {
+      "id": "choose_one",
+      "action": "Choose at most one highest-value useful action; otherwise record NO_CHANGE.",
+      "condition": "Action must be evidence-backed, non-spammy, and useful to the target community.",
+      "mutates": false,
+      "requires_approval": false
+    },
+    {
+      "id": "propose_action",
+      "action": "Create a bounded proposal/artifact/issue candidate for review.",
+      "condition": "Only when a specific useful action passed the quality gate.",
+      "mutates": true,
+      "requires_approval": true
+    }
+  ],
+  "idempotency_key": "hal.community.daily-growth:{local_date}",
+  "expected_receipts": [
+    "traction_snapshot",
+    "inbound_delta",
+    "selected_action_or_no_change",
+    "proposal_receipt_if_any"
+  ],
+  "migration": {
+    "source": "chatgpt_automations",
+    "source_title": "HAL Community Growth",
+    "state": "shadow"
+  }
+}
