@@ -14,6 +14,9 @@ HAL SUPREME is a community-friendly AI companion and creator stack. This reposit
 | API | https://api.halsupreme.com |
 | Discussions | [GitHub Discussions](https://github.com/UniteAndCreateForLife/hal-supreme-community/discussions) |
 | Discord | [https://discord.gg/GnufdBbyg](https://discord.gg/GnufdBbyg) |
+| Build Together | [docs/BUILD_TOGETHER.md](docs/BUILD_TOGETHER.md) |
+| Public project ideas | [docs/PROJECT_IDEAS.md](docs/PROJECT_IDEAS.md) |
+| Collaboration networks | [docs/COLLABORATION_NETWORKS.md](docs/COLLABORATION_NETWORKS.md) |
 
 ## What HAL is
 
@@ -41,6 +44,8 @@ Capabilities include **search**, **images**, **sandbox**, **voice**, **MCP**, an
 **Never paste gateway Bearer tokens, API keys, private paths, OTPs, hidden/system prompts, or confidential client data into Issues, Discussions, Discord, or PRs.**
 
 ## Ways to collaborate
+
+Start with **[Build Together](docs/BUILD_TOGETHER.md)** for contribution tracks, then pick a concrete work package from **[Public Project Ideas](docs/PROJECT_IDEAS.md)**. If you want to help HAL connect with other communities, see **[Collaboration Networks](docs/COLLABORATION_NETWORKS.md)**.
 
 ### Contribute
 
@@ -88,6 +93,9 @@ Full guide: [docs/DOCKER_GATEWAY.md](docs/DOCKER_GATEWAY.md) · Pack: [docker/mo
 - [Peer join](docs/peer-join.md) — point OpenAI-compatible clients at HAL
 - [MCP setup](docs/mcp-setup.md) — Cursor / Claude Desktop style config
 - [Community hub](docs/community-hub.md) — themes and where to talk
+- [Build Together](docs/BUILD_TOGETHER.md) — contribution tracks and review model
+- [Public project ideas](docs/PROJECT_IDEAS.md) — concrete work packages
+- [Collaboration networks](docs/COLLABORATION_NETWORKS.md) — external community and program targets
 
 ## License
 
