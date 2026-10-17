@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HAL SUPREME — Holographic Operations Prototype</title>
+<title>HAL SUPREME — Unified Holographic Workspace Prototype</title>
 <style>
 :root{
   color-scheme:dark;
@@ -64,7 +64,8 @@ button{color:inherit}
   display:grid;place-items:center;box-shadow:0 0 30px rgba(103,255,161,.18),inset 0 0 18px rgba(103,255,161,.08);
   font-weight:900;letter-spacing:.08em;color:var(--phosphor)
 }
-.nav{display:flex;flex-direction:column;gap:8px;width:100%}
+.nav{display:flex;flex-direction:column;gap:6px;width:100%;overflow:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
 .nav button{
   border:1px solid transparent;background:transparent;border-radius:12px;min-height:54px;padding:8px 4px;
   display:grid;place-items:center;color:var(--muted);cursor:pointer;transition:.2s var(--ease);position:relative
@@ -97,6 +98,16 @@ main{min-width:0}
   background:rgba(2,13,10,.82);backdrop-filter:blur(18px)
 }
 .logo{font-weight:900;letter-spacing:.18em;font-size:13px;color:var(--phosphor);white-space:nowrap}
+.command{
+  flex:1;max-width:720px;display:flex;align-items:center;gap:8px;margin-left:14px;
+  border:1px solid rgba(83,231,255,.18);border-radius:12px;background:rgba(2,20,16,.6);padding:7px 10px;color:var(--muted)
+}
+.command input{width:100%;border:0;outline:0;background:transparent;color:var(--text);font:inherit}
+.command kbd{margin-left:auto;white-space:nowrap}
+.workspace-pill{
+  display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(134,255,157,.2);border-radius:999px;
+  padding:5px 9px;color:var(--phosphor);font-size:10px;letter-spacing:.06em;text-transform:uppercase
+}
 .mode{
   margin-left:auto;display:flex;align-items:center;gap:9px;color:var(--muted);font-size:12px
 }
@@ -215,6 +226,31 @@ main{min-width:0}
 .task:last-child{border-bottom:0}
 .task a{font-weight:700}.task small{display:block;color:var(--muted)}
 .tag{align-self:center;border:1px solid rgba(200,156,255,.28);color:#dfc7ff;border-radius:999px;padding:3px 7px;font-size:9px}
+.dock-grid{padding:12px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.appcard{
+  min-height:138px;border:1px solid rgba(121,255,197,.13);border-radius:14px;padding:12px;
+  background:linear-gradient(180deg,rgba(5,27,21,.7),rgba(2,14,11,.8));position:relative
+}
+.appcard:hover{border-color:rgba(83,231,255,.3);box-shadow:0 0 20px rgba(83,231,255,.06)}
+.apphead{display:flex;align-items:center;gap:9px}
+.appicon{
+  width:34px;height:34px;border-radius:10px;display:grid;place-items:center;border:1px solid rgba(83,231,255,.25);
+  color:var(--cyan);background:rgba(83,231,255,.06);font-weight:900
+}
+.apphead b{font-size:12px}.apphead small{display:block;color:var(--muted);font-size:9px}
+.appstatus{margin-left:auto;width:8px;height:8px;border-radius:50%;box-shadow:0 0 10px currentColor}
+.appstatus.good{background:var(--phosphor);color:var(--phosphor)}
+.appstatus.warn{background:var(--amber);color:var(--amber)}
+.appstatus.off{background:var(--red);color:var(--red)}
+.appcard p{font-size:10px;color:var(--muted);margin:10px 0}
+.appactions{display:flex;gap:6px;flex-wrap:wrap}
+.appactions button{
+  border:1px solid rgba(83,231,255,.18);background:rgba(20,72,62,.2);border-radius:8px;padding:6px 8px;
+  cursor:pointer;font-size:9px
+}
+.appactions button:hover,.appactions button:focus-visible{border-color:rgba(83,231,255,.45);color:var(--cyan)}
+.integration-strip{display:flex;gap:8px;flex-wrap:wrap;padding:10px 12px;border-top:1px solid rgba(121,255,197,.08)}
+.integration-strip span{font-size:9px;color:var(--muted);border:1px solid rgba(121,255,197,.12);border-radius:999px;padding:4px 7px}
 .footer{
   display:flex;justify-content:space-between;gap:10px;padding:10px 2px 18px;color:var(--muted);font-size:10px
 }
@@ -223,6 +259,7 @@ kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius
 @media(max-width:1100px){
   .hero,.grid{grid-template-columns:1fr}
   .columns{grid-template-columns:1fr 1fr}
+  .dock-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:720px){
   :root{--navw:64px}
@@ -232,6 +269,7 @@ kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius
   .hero-body{grid-template-columns:1fr}
   .hero-copy{padding:0 16px 18px;text-align:center;align-items:center}
   .columns{grid-template-columns:1fr}
+  .dock-grid{grid-template-columns:1fr 1fr}
   .health{grid-template-columns:1fr 1fr}
   .node{transform:scale(.9);transform-origin:top left}
 }
@@ -246,7 +284,10 @@ kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius
   .nav button{min-width:58px;min-height:50px}
   .nav button[aria-current="page"]:before{left:10px;right:10px;bottom:-4px;top:auto;width:auto;height:2px}
   main{padding-bottom:68px}
+  .command{display:none}
+  .workspace-pill{display:none}
   .mode span:not(.clock):not(.dot){display:none}
+  .dock-grid{grid-template-columns:1fr}
   .health{grid-template-columns:1fr}
   .op{grid-template-columns:10px minmax(0,1fr)}
   .op-side{grid-column:2;text-align:left;display:flex;gap:8px}
@@ -261,11 +302,17 @@ kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius
   <aside class="sidebar" aria-label="HAL workspace navigation">
     <div class="brand" aria-label="HAL">H</div>
     <nav class="nav">
+      <button aria-label="Chat"><span class="ico">◫</span><small>Chat</small></button>
       <button aria-current="page" aria-label="Operations"><span class="ico">⌁</span><small>Ops</small></button>
-      <button aria-label="Music and video"><span class="ico">◉</span><small>Media</small></button>
+      <button aria-label="Music Queue and Creator Studio"><span class="ico">◉</span><small>Media</small></button>
+      <button aria-label="Radio and Together"><span class="ico">⌁</span><small>Radio</small></button>
+      <button aria-label="Team and Project Rooms"><span class="ico">◎</span><small>Team</small></button>
       <button aria-label="Build Together"><span class="ico">◇</span><small>Build</small></button>
+      <button aria-label="Community Bounties"><span class="ico">✦</span><small>Bounty</small></button>
       <button aria-label="System graph"><span class="ico">⌘</span><small>Graph</small></button>
+      <button aria-label="Apps and plugins"><span class="ico">▦</span><small>Apps</small></button>
       <button aria-label="System Lab"><span class="ico">⌬</span><small>Lab</small></button>
+      <button aria-label="Settings"><span class="ico">⚙</span><small>Settings</small></button>
     </nav>
     <div class="spacer"></div>
     <div class="signal" aria-label="HAL online">AI</div>
@@ -273,7 +320,13 @@ kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius
 
   <main>
     <header class="topbar">
-      <div class="logo">HAL SUPREME // OPERATIONS</div>
+      <div class="logo">HAL SUPREME // UNIFIED WORKSPACE</div>
+      <div class="command" role="search">
+        <span aria-hidden="true">⌕</span>
+        <input aria-label="Search HAL systems" placeholder="Search projects, tasks, tracks, apps, people, artifacts…">
+        <kbd>Ctrl K</kbd>
+      </div>
+      <span class="workspace-pill">Project · HAL Supreme</span>
       <div class="mode">
         <span class="dot" aria-hidden="true"></span>
         <span>NETWORK ONLINE</span>
@@ -412,6 +465,73 @@ kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius
         </article>
       </section>
 
+
+      <section class="panel" style="margin-bottom:14px">
+        <div class="panel-head">
+          <div><div class="eyebrow">Native Integration</div><div class="panel-title">Apps & Plugin Dock</div></div>
+          <span class="badge">permissioned</span>
+        </div>
+        <div class="dock-grid">
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">M</div><div><b>Muse</b><small>creative / agent workspace</small></div><span class="appstatus warn" aria-label="degraded"></span></div>
+            <p>Docked context bridge ready. Structured routes preferred; bounded UI control only when no API/MCP route exists.</p>
+            <div class="appactions"><button>Dock</button><button>Permissions</button><button>Activity</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">GH</div><div><b>GitHub</b><small>repos / issues / pull requests</small></div><span class="appstatus good" aria-label="connected"></span></div>
+            <p>Public Build Together tasks, contribution state, PR review, and code collaboration mapped into HAL projects.</p>
+            <div class="appactions"><button>Open</button><button>Tasks</button><button>Receipts</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">G</div><div><b>Google Workspace</b><small>mail / calendar / drive</small></div><span class="appstatus good" aria-label="connected"></span></div>
+            <p>Mail, scheduling, files, and team context remain permissioned and attributable to the initiating HAL task.</p>
+            <div class="appactions"><button>Dock</button><button>Scopes</button><button>Activity</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">CF</div><div><b>Cloudflare</b><small>site / edge / runtime</small></div><span class="appstatus good" aria-label="connected"></span></div>
+            <p>Website and edge status are visible here; deployment remains owner-gated with exact rollback evidence.</p>
+            <div class="appactions"><button>Open</button><button>Health</button><button>Deploys</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">HF</div><div><b>Hugging Face</b><small>Spaces / models / datasets</small></div><span class="appstatus good" aria-label="connected"></span></div>
+            <p>Public demos and grant tasks connect to Build Together without importing private runtime state.</p>
+            <div class="appactions"><button>Open</button><button>Spaces</button><button>Tasks</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">LP</div><div><b>Livepeer</b><small>media compute</small></div><span class="appstatus warn" aria-label="limited"></span></div>
+            <p>Provider status is visible; media submissions remain disabled unless a governed capability is active.</p>
+            <div class="appactions"><button>Status</button><button>Limits</button><button>Receipts</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">YT</div><div><b>YouTube / OBS</b><small>stream / publish</small></div><span class="appstatus good" aria-label="connected"></span></div>
+            <p>Live, recording, and publishing work share the same project timeline and require explicit publish authority.</p>
+            <div class="appactions"><button>Dock</button><button>Studio</button><button>Activity</button></div>
+          </article>
+          <article class="appcard">
+            <div class="apphead"><div class="appicon">HAL</div><div><b>HAL Android</b><small>mobile workspace</small></div><span class="appstatus good" aria-label="connected"></span></div>
+            <p>Same projects, rooms, tasks, approvals, and account context—optimized for mobile rather than duplicated.</p>
+            <div class="appactions"><button>Devices</button><button>Sync</button><button>Permissions</button></div>
+          </article>
+        </div>
+        <div class="integration-strip">
+          <span>API/MCP first</span><span>UI control fallback</span><span>per-app capability scopes</span><span>project-context routing</span>
+          <span>explicit approval for public actions</span><span>revoke at any time</span><span>EventStore receipts</span>
+        </div>
+      </section>
+
+      <section class="panel" style="margin-bottom:14px">
+        <div class="panel-head">
+          <div><div class="eyebrow">One Product</div><div class="panel-title">Seamless System Paths</div></div>
+          <span class="badge">shared context</span>
+        </div>
+        <div class="contrib">
+          <div class="task"><div><b>Music → Video → Team → Radio</b><small>Track project opens its video tasks, collaborators, versions, approvals, and eventual radio/publication state without changing applications.</small></div><span class="tag">creator</span></div>
+          <div class="task"><div><b>Build Together → GitHub → Review → Credit</b><small>Public issue and PR state is mapped into HAL contributor projects; accepted work becomes visible credit and changelog evidence.</small></div><span class="tag">community</span></div>
+          <div class="task"><div><b>Chat → Operations → App Dock</b><small>A conversation can create or inspect canonical work; Operations shows execution; App Dock provides the permitted external-system surface.</small></div><span class="tag">workflow</span></div>
+          <div class="task"><div><b>System Graph → Incident → System Lab</b><small>Degraded nodes link to evidence, incidents, diagnostics, regression tests, and recommended fixes instead of separate dashboards.</small></div><span class="tag">reliability</span></div>
+        </div>
+      </section>
+
       <section class="grid">
         <article class="panel">
           <div class="panel-head"><div><div class="eyebrow">Topology</div><div class="panel-title">System Graph</div></div><span class="badge">synthetic</span></div>
@@ -439,7 +559,7 @@ kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius
       </section>
 
       <div class="footer">
-        <span>HAL SUPREME holographic operations prototype · synthetic data only</span>
+        <span>HAL SUPREME unified holographic workspace prototype · synthetic data only</span>
         <span><kbd>Tab</kbd> keyboard navigation · reduced-motion supported</span>
       </div>
     </div>
