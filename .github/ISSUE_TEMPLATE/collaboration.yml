@@ -1,0 +1,70 @@
+name: Collaboration proposal
+description: Propose a concrete collaboration between HAL and another community, project, or organization
+title: "[Collab] "
+labels:
+  - collaboration
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Strong proposals have a specific shared project, not a generic promotion request.
+  - type: input
+    id: community
+    attributes:
+      label: Community / organization
+      placeholder: Project, foundation, lab, creator collective, etc.
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: Public link
+      placeholder: https://...
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Concrete collaboration idea
+      description: What would we build, test, research, document, or create together?
+    validations:
+      required: true
+  - type: textarea
+    id: mutual
+    attributes:
+      label: Mutual value
+      description: What does HAL contribute, and what does the partner/community gain?
+    validations:
+      required: true
+  - type: textarea
+    id: ready
+    attributes:
+      label: What HAL should have ready first
+      description: Demo, docs, public issue, benchmark, API example, creator brief, etc.
+  - type: dropdown
+    id: outreach
+    attributes:
+      label: Outreach needed?
+      options:
+        - Research only for now
+        - Public community post
+        - Maintainer / organizer contact
+        - Application / formal program
+    validations:
+      required: true
+  - type: textarea
+    id: sources
+    attributes:
+      label: Sources / current program details
+      description: Include dated links for eligibility, deadlines, or program rules.
+    validations:
+      required: true
+  - type: checkboxes
+    id: conduct
+    attributes:
+      label: Outreach quality
+      options:
+        - label: This proposal is targeted and specific, not mass-spam.
+          required: true
+        - label: No endorsement or partnership is claimed unless the other party confirms it.
+          required: true
