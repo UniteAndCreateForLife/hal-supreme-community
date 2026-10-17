@@ -1,0 +1,458 @@
+<!doctype html>
+<html lang="en" data-theme="void">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HAL SUPREME — Holographic Operations Prototype</title>
+<style>
+:root{
+  color-scheme:dark;
+  --bg:#04110d;
+  --bg2:#071c16;
+  --panel:rgba(8,32,26,.78);
+  --panel2:rgba(5,22,18,.9);
+  --line:rgba(121,255,197,.24);
+  --line2:rgba(67,222,255,.26);
+  --text:#d9ffe9;
+  --muted:#8dbca6;
+  --phosphor:#86ff9d;
+  --cyan:#53e7ff;
+  --amber:#ffb347;
+  --red:#ff6e72;
+  --violet:#c89cff;
+  --shadow:0 0 24px rgba(74,255,170,.12);
+  --radius:16px;
+  --navw:82px;
+  --ease:cubic-bezier(.2,.75,.2,1);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:
+    radial-gradient(circle at 70% -20%,rgba(0,255,199,.09),transparent 42%),
+    linear-gradient(180deg,#03100c,#020906 68%,#010504);
+  color:var(--text);
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:50;
+  background:repeating-linear-gradient(180deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px);
+  mix-blend-mode:screen;
+}
+body:after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:49;
+  background:linear-gradient(90deg,transparent,rgba(92,255,190,.025),transparent);
+  animation:sweep 9s linear infinite;
+}
+@keyframes sweep{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
+button,a{font:inherit}
+a{color:inherit;text-decoration:none}
+button{color:inherit}
+.app{min-height:100%;display:grid;grid-template-columns:var(--navw) minmax(0,1fr)}
+.sidebar{
+  position:sticky;top:0;height:100vh;padding:14px 10px;
+  border-right:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(3,18,13,.94),rgba(2,10,8,.96));
+  backdrop-filter:blur(16px);
+  display:flex;flex-direction:column;align-items:center;gap:12px;z-index:20;
+}
+.brand{
+  width:54px;height:54px;border:1px solid rgba(138,255,191,.42);border-radius:50%;
+  display:grid;place-items:center;box-shadow:0 0 30px rgba(103,255,161,.18),inset 0 0 18px rgba(103,255,161,.08);
+  font-weight:900;letter-spacing:.08em;color:var(--phosphor)
+}
+.nav{display:flex;flex-direction:column;gap:8px;width:100%}
+.nav button{
+  border:1px solid transparent;background:transparent;border-radius:12px;min-height:54px;padding:8px 4px;
+  display:grid;place-items:center;color:var(--muted);cursor:pointer;transition:.2s var(--ease);position:relative
+}
+.nav button:hover,.nav button:focus-visible,.nav button[aria-current="page"]{
+  border-color:rgba(83,231,255,.32);background:rgba(38,136,112,.14);color:var(--text);
+  box-shadow:0 0 18px rgba(83,231,255,.07)
+}
+.nav button[aria-current="page"]:before{
+  content:"";position:absolute;left:-8px;width:3px;height:28px;background:var(--cyan);
+  box-shadow:0 0 12px var(--cyan)
+}
+.ico{font-size:20px}
+.nav small{font-size:9px;letter-spacing:.1em;text-transform:uppercase;margin-top:3px}
+.sidebar .spacer{flex:1}
+.signal{
+  width:48px;height:48px;border-radius:50%;border:1px solid rgba(134,255,157,.35);position:relative;
+  display:grid;place-items:center;color:var(--phosphor);font-weight:700
+}
+.signal:before,.signal:after{
+  content:"";position:absolute;border:1px solid rgba(134,255,157,.3);border-radius:50%;
+  inset:6px;animation:pulse 2.4s ease-in-out infinite
+}
+.signal:after{inset:13px;animation-delay:.35s}
+@keyframes pulse{50%{opacity:.2;transform:scale(.86)}}
+main{min-width:0}
+.topbar{
+  position:sticky;top:0;z-index:15;
+  display:flex;align-items:center;gap:14px;padding:12px 18px;border-bottom:1px solid var(--line);
+  background:rgba(2,13,10,.82);backdrop-filter:blur(18px)
+}
+.logo{font-weight:900;letter-spacing:.18em;font-size:13px;color:var(--phosphor);white-space:nowrap}
+.mode{
+  margin-left:auto;display:flex;align-items:center;gap:9px;color:var(--muted);font-size:12px
+}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--phosphor);box-shadow:0 0 12px var(--phosphor)}
+.clock{font-variant-numeric:tabular-nums;color:var(--cyan);font-weight:700}
+.content{padding:18px;max-width:1800px;margin:auto}
+.hero{
+  display:grid;grid-template-columns:minmax(0,1.3fr) minmax(340px,.7fr);gap:14px;margin-bottom:14px
+}
+.panel{
+  position:relative;border:1px solid var(--line);border-radius:var(--radius);
+  background:linear-gradient(180deg,rgba(7,33,26,.76),rgba(3,19,15,.84));
+  box-shadow:var(--shadow),inset 0 0 24px rgba(53,255,176,.025);
+  overflow:hidden
+}
+.panel:before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(90,255,190,.08),transparent 3%,transparent 97%,rgba(90,255,190,.06)),
+    linear-gradient(180deg,rgba(83,231,255,.04),transparent 16%);
+}
+.panel-head{
+  min-height:44px;display:flex;align-items:center;gap:10px;padding:10px 13px;border-bottom:1px solid rgba(124,255,196,.12)
+}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:10px;color:var(--muted)}
+.panel-title{font-weight:800;letter-spacing:.04em}
+.badge{
+  margin-left:auto;border:1px solid rgba(134,255,157,.25);border-radius:999px;padding:3px 8px;
+  color:var(--phosphor);font-size:10px;letter-spacing:.08em;text-transform:uppercase
+}
+.hero-body{display:grid;grid-template-columns:minmax(220px,.6fr) minmax(0,1.4fr);min-height:260px}
+.hal-orb{display:grid;place-items:center;position:relative;min-height:260px}
+.ring{
+  position:absolute;border:1px solid rgba(83,231,255,.28);border-radius:50%;
+  box-shadow:0 0 18px rgba(83,231,255,.06);animation:spin 14s linear infinite
+}
+.r1{width:190px;height:190px}
+.r2{width:142px;height:142px;animation-direction:reverse;animation-duration:9s;border-style:dashed}
+.r3{width:92px;height:92px;animation-duration:6s}
+@keyframes spin{to{transform:rotate(360deg)}}
+.core{
+  width:68px;height:68px;border-radius:18px;display:grid;place-items:center;
+  background:linear-gradient(135deg,rgba(134,255,157,.2),rgba(83,231,255,.08));
+  border:1px solid rgba(134,255,157,.55);box-shadow:0 0 30px rgba(134,255,157,.16),inset 0 0 18px rgba(134,255,157,.12);
+  font-weight:900;color:var(--phosphor)
+}
+.hero-copy{padding:20px 18px 18px 0;display:flex;flex-direction:column;justify-content:center}
+.hero-copy h1{margin:0 0 6px;font-size:clamp(26px,4vw,48px);line-height:1;letter-spacing:.04em}
+.hero-copy p{max-width:760px;color:var(--muted);margin:0 0 14px}
+.quick{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  border:1px solid rgba(83,231,255,.24);background:rgba(28,94,81,.16);border-radius:999px;padding:7px 10px;
+  font-size:11px;color:#c8fff5
+}
+.health{padding:13px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.metric{
+  min-height:92px;border:1px solid rgba(121,255,197,.13);border-radius:12px;background:rgba(3,17,13,.58);padding:12px
+}
+.metric b{font-size:23px;font-variant-numeric:tabular-nums;display:block;margin-top:3px}
+.metric small{color:var(--muted)}
+.bar{height:5px;background:rgba(255,255,255,.07);border-radius:999px;margin-top:10px;overflow:hidden}
+.bar span{height:100%;display:block;background:linear-gradient(90deg,var(--phosphor),var(--cyan));box-shadow:0 0 10px rgba(83,231,255,.4)}
+.grid{
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:14px;margin-bottom:14px
+}
+.ops-list{padding:0;margin:0;list-style:none}
+.op{
+  display:grid;grid-template-columns:12px minmax(0,1fr) auto;gap:12px;padding:13px;border-bottom:1px solid rgba(121,255,197,.09)
+}
+.op:last-child{border-bottom:0}
+.state{width:10px;height:10px;border-radius:50%;margin-top:6px;box-shadow:0 0 12px currentColor}
+.running{color:var(--cyan);background:var(--cyan)}
+.review{color:var(--amber);background:var(--amber)}
+.blocked{color:var(--red);background:var(--red)}
+.done{color:var(--phosphor);background:var(--phosphor)}
+.op-title{font-weight:700}
+.op-meta{font-size:11px;color:var(--muted);margin-top:4px}
+.op-side{text-align:right;font-variant-numeric:tabular-nums}
+.op-side b{display:block}
+.op-side small{color:var(--muted)}
+.timeline{padding:10px 12px}
+.event{
+  display:grid;grid-template-columns:76px 1fr;gap:12px;padding:9px 0;border-bottom:1px dashed rgba(121,255,197,.1)
+}
+.event:last-child{border-bottom:0}
+.event time{color:var(--cyan);font-variant-numeric:tabular-nums;font-size:11px}
+.event p{margin:0;color:#c8e9da;font-size:12px}
+.columns{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-bottom:14px
+}
+.queue{padding:11px}
+.queue-card{
+  border:1px solid rgba(121,255,197,.12);border-radius:12px;padding:11px;margin-bottom:8px;background:rgba(2,13,10,.48)
+}
+.queue-card:last-child{margin-bottom:0}
+.queue-top{display:flex;gap:8px;align-items:center}
+.queue-top b{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.status{
+  margin-left:auto;font-size:9px;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:3px 7px;
+  border:1px solid currentColor
+}
+.status.hal{color:var(--phosphor)}.status.pending{color:var(--amber)}.status.external{color:var(--violet)}
+.queue-card p{margin:6px 0 0;color:var(--muted);font-size:11px}
+.network{min-height:270px;position:relative;padding:18px}
+.netline{position:absolute;height:1px;transform-origin:0 50%;background:linear-gradient(90deg,rgba(83,231,255,.02),rgba(83,231,255,.32),rgba(134,255,157,.12))}
+.node{
+  position:absolute;width:118px;min-height:54px;border:1px solid rgba(83,231,255,.24);border-radius:12px;
+  background:rgba(4,25,20,.9);padding:9px;text-align:center;box-shadow:0 0 18px rgba(83,231,255,.05)
+}
+.node b{font-size:11px;display:block}.node small{color:var(--muted);font-size:9px}
+.node.good{border-color:rgba(134,255,157,.35)}.node.warn{border-color:rgba(255,179,71,.4)}
+.contrib{padding:10px 12px}
+.task{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;padding:10px 0;border-bottom:1px solid rgba(121,255,197,.08)
+}
+.task:last-child{border-bottom:0}
+.task a{font-weight:700}.task small{display:block;color:var(--muted)}
+.tag{align-self:center;border:1px solid rgba(200,156,255,.28);color:#dfc7ff;border-radius:999px;padding:3px 7px;font-size:9px}
+.footer{
+  display:flex;justify-content:space-between;gap:10px;padding:10px 2px 18px;color:var(--muted);font-size:10px
+}
+kbd{border:1px solid rgba(121,255,197,.22);border-bottom-width:2px;border-radius:5px;padding:1px 5px;background:rgba(0,0,0,.2)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+@media(max-width:1100px){
+  .hero,.grid{grid-template-columns:1fr}
+  .columns{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  :root{--navw:64px}
+  .content{padding:10px}
+  .topbar{padding:10px}
+  .logo{letter-spacing:.08em}
+  .hero-body{grid-template-columns:1fr}
+  .hero-copy{padding:0 16px 18px;text-align:center;align-items:center}
+  .columns{grid-template-columns:1fr}
+  .health{grid-template-columns:1fr 1fr}
+  .node{transform:scale(.9);transform-origin:top left}
+}
+@media(max-width:500px){
+  .app{grid-template-columns:1fr}
+  .sidebar{
+    position:fixed;bottom:0;top:auto;left:0;right:0;width:100%;height:64px;z-index:60;
+    flex-direction:row;border-right:0;border-top:1px solid var(--line);padding:6px 8px
+  }
+  .brand,.sidebar .spacer,.signal{display:none}
+  .nav{flex-direction:row;overflow-x:auto}
+  .nav button{min-width:58px;min-height:50px}
+  .nav button[aria-current="page"]:before{left:10px;right:10px;bottom:-4px;top:auto;width:auto;height:2px}
+  main{padding-bottom:68px}
+  .mode span:not(.clock):not(.dot){display:none}
+  .health{grid-template-columns:1fr}
+  .op{grid-template-columns:10px minmax(0,1fr)}
+  .op-side{grid-column:2;text-align:left;display:flex;gap:8px}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar" aria-label="HAL workspace navigation">
+    <div class="brand" aria-label="HAL">H</div>
+    <nav class="nav">
+      <button aria-current="page" aria-label="Operations"><span class="ico">⌁</span><small>Ops</small></button>
+      <button aria-label="Music and video"><span class="ico">◉</span><small>Media</small></button>
+      <button aria-label="Build Together"><span class="ico">◇</span><small>Build</small></button>
+      <button aria-label="System graph"><span class="ico">⌘</span><small>Graph</small></button>
+      <button aria-label="System Lab"><span class="ico">⌬</span><small>Lab</small></button>
+    </nav>
+    <div class="spacer"></div>
+    <div class="signal" aria-label="HAL online">AI</div>
+  </aside>
+
+  <main>
+    <header class="topbar">
+      <div class="logo">HAL SUPREME // OPERATIONS</div>
+      <div class="mode">
+        <span class="dot" aria-hidden="true"></span>
+        <span>NETWORK ONLINE</span>
+        <span class="clock" id="clock">00:00:00</span>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="hero">
+        <article class="panel">
+          <div class="panel-head">
+            <div><div class="eyebrow">Command Core</div><div class="panel-title">HAL Operations Control</div></div>
+            <span class="badge">Synthetic prototype</span>
+          </div>
+          <div class="hero-body">
+            <div class="hal-orb" aria-hidden="true">
+              <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
+              <div class="core">HAL</div>
+            </div>
+            <div class="hero-copy">
+              <h1>See what is happening.</h1>
+              <p>One operator view for tasks, agents, creator pipelines, contributor work, system health, evidence, approvals, and the next action. This prototype uses synthetic data only.</p>
+              <div class="quick">
+                <span class="chip">WorkGraph canonical</span>
+                <span class="chip">Evidence-first status</span>
+                <span class="chip">Contributor-aware</span>
+                <span class="chip">Reduced-motion safe</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <aside class="panel">
+          <div class="panel-head"><div><div class="eyebrow">Telemetry</div><div class="panel-title">System Health</div></div></div>
+          <div class="health">
+            <div class="metric"><small>Acceptance</small><b>114/114</b><div class="bar"><span style="width:100%"></span></div></div>
+            <div class="metric"><small>Gateway</small><b>ONLINE</b><div class="bar"><span style="width:94%"></span></div></div>
+            <div class="metric"><small>GPU Pressure</small><b>46%</b><div class="bar"><span style="width:46%"></span></div></div>
+            <div class="metric"><small>Queue Health</small><b>GOOD</b><div class="bar"><span style="width:82%"></span></div></div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <div class="panel-head">
+            <div><div class="eyebrow">Canonical Work</div><div class="panel-title">Active Operations</div></div>
+            <span class="badge">5 visible</span>
+          </div>
+          <ul class="ops-list">
+            <li class="op">
+              <span class="state running" aria-label="running"></span>
+              <div><div class="op-title">Music Video — Neon Signal</div><div class="op-meta">HAL Media Worker · render / lip-sync · WorkGraph media-0027</div></div>
+              <div class="op-side"><b>68%</b><small>08:43</small></div>
+            </li>
+            <li class="op">
+              <span class="state review" aria-label="review"></span>
+              <div><div class="op-title">Holographic Operations UI</div><div class="op-meta">Website team · accessibility review · 9 checks pending</div></div>
+              <div class="op-side"><b>REVIEW</b><small>3 files</small></div>
+            </li>
+            <li class="op">
+              <span class="state running" aria-label="running"></span>
+              <div><div class="op-title">Build Together backlog sync</div><div class="op-meta">Community adapter · GitHub issues → HAL contribution view</div></div>
+              <div class="op-side"><b>21/35</b><small>public only</small></div>
+            </li>
+            <li class="op">
+              <span class="state blocked" aria-label="blocked"></span>
+              <div><div class="op-title">Community GPU Demo</div><div class="op-meta">Blocked on grant application packet and selected Space</div></div>
+              <div class="op-side"><b>BLOCKED</b><small>owner action</small></div>
+            </li>
+            <li class="op">
+              <span class="state done" aria-label="done"></span>
+              <div><div class="op-title">Contributor Intake Forms</div><div class="op-meta">Merged · contributor / collaboration / creator forms active</div></div>
+              <div class="op-side"><b>DONE</b><small>receipt #30</small></div>
+            </li>
+          </ul>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head"><div><div class="eyebrow">Evidence Stream</div><div class="panel-title">Recent Activity</div></div></div>
+          <div class="timeline">
+            <div class="event"><time>22:13:59</time><p>Issue-intake PR merged. Three structured public forms are now active.</p></div>
+            <div class="event"><time>22:12:54</time><p>Build Together contributor framework merged with project ideas and network map.</p></div>
+            <div class="event"><time>22:09:24</time><p>Community Music prototype task opened with rights/moderation acceptance criteria.</p></div>
+            <div class="event"><time>22:06:25</time><p>Master HAL activation program queued for canonical local review.</p></div>
+            <div class="event"><time>22:03:28</time><p>Holographic operations design-system work requested.</p></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="columns">
+        <article class="panel">
+          <div class="panel-head"><div><div class="eyebrow">Creator Pipeline</div><div class="panel-title">Music / Video Ownership</div></div></div>
+          <div class="queue">
+            <div class="queue-card">
+              <div class="queue-top"><b>Neon Signal — music video</b><span class="status hal">HAL owned</span></div>
+              <p>Rendering scene 12 · QA gate next · GPU worker A</p>
+            </div>
+            <div class="queue-card">
+              <div class="queue-top"><b>Community Track 0042</b><span class="status pending">review</span></div>
+              <p>Rights attested · metadata valid · moderation pending</p>
+            </div>
+            <div class="queue-card">
+              <div class="queue-top"><b>Legacy Claude session</b><span class="status external">external owner</span></div>
+              <p>Observed only · transfer requires exact process identity + fence proof</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head"><div><div class="eyebrow">Community</div><div class="panel-title">Build Together</div></div></div>
+          <div class="contrib">
+            <div class="task"><div><a href="https://github.com/UniteAndCreateForLife/hal-supreme-community/issues/17">Holographic status card</a><small>Accessible UI prototype · newcomer friendly</small></div><span class="tag">good first issue</span></div>
+            <div class="task"><div><a href="https://github.com/UniteAndCreateForLife/hal-supreme-community/issues/31">HAL System Graph</a><small>Synthetic network visualization</small></div><span class="tag">help wanted</span></div>
+            <div class="task"><div><a href="https://github.com/UniteAndCreateForLife/hal-supreme-community/issues/33">Community Radio discovery</a><small>Rights-aware music experience</small></div><span class="tag">help wanted</span></div>
+            <div class="task"><div><a href="https://github.com/UniteAndCreateForLife/hal-supreme-community/issues/35">Community GPU Grant</a><small>Prepare public Space + application packet</small></div><span class="tag">help wanted</span></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head"><div><div class="eyebrow">Approvals</div><div class="panel-title">Owner Queue</div></div></div>
+          <div class="queue">
+            <div class="queue-card">
+              <div class="queue-top"><b>Deploy Operations UI</b><span class="status pending">awaiting</span></div>
+              <p>Requires acceptance evidence + rollback receipt</p>
+            </div>
+            <div class="queue-card">
+              <div class="queue-top"><b>Publish creator remix</b><span class="status pending">awaiting</span></div>
+              <p>Rights check passed · public publish still owner-gated</p>
+            </div>
+            <div class="queue-card">
+              <div class="queue-top"><b>External partner outreach</b><span class="status pending">draft</span></div>
+              <p>4 targeted collaboration drafts ready for review</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="panel">
+          <div class="panel-head"><div><div class="eyebrow">Topology</div><div class="panel-title">System Graph</div></div><span class="badge">synthetic</span></div>
+          <div class="network" aria-label="Synthetic HAL network graph">
+            <span class="netline" style="left:22%;top:32%;width:25%;transform:rotate(12deg)"></span>
+            <span class="netline" style="left:45%;top:46%;width:28%;transform:rotate(-10deg)"></span>
+            <span class="netline" style="left:25%;top:66%;width:28%;transform:rotate(-25deg)"></span>
+            <span class="netline" style="left:52%;top:65%;width:24%;transform:rotate(20deg)"></span>
+            <div class="node good" style="left:8%;top:18%"><b>halsupreme.com</b><small>edge / UI</small></div>
+            <div class="node good" style="left:38%;top:36%"><b>WorkGraph</b><small>canonical tasks</small></div>
+            <div class="node good" style="left:70%;top:18%"><b>Model Gateway</b><small>online</small></div>
+            <div class="node good" style="left:12%;top:66%"><b>Creator Studio</b><small>media</small></div>
+            <div class="node warn" style="left:68%;top:66%"><b>Community Edge</b><small>review needed</small></div>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-head"><div><div class="eyebrow">Operator Rule</div><div class="panel-title">What HAL shows</div></div></div>
+          <div class="contrib">
+            <div class="task"><div><b>Visible</b><small>Task, owner, phase, files/artifacts, tools/actions, elapsed time, resources, tests, warnings, blockers, receipts, next action.</small></div><span class="tag">evidence</span></div>
+            <div class="task"><div><b>Not exposed</b><small>Private model chain-of-thought, secrets, credentials, private user data, or unsupported claims of access.</small></div><span class="tag">boundary</span></div>
+            <div class="task"><div><b>Governed</b><small>Deploy, publish, spend, destructive changes, account actions, and unknown ownership transfers require explicit approval.</small></div><span class="tag">control</span></div>
+          </div>
+        </article>
+      </section>
+
+      <div class="footer">
+        <span>HAL SUPREME holographic operations prototype · synthetic data only</span>
+        <span><kbd>Tab</kbd> keyboard navigation · reduced-motion supported</span>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script>
+const clock = document.getElementById('clock');
+const tick = () => {
+  const d = new Date();
+  clock.textContent = d.toLocaleTimeString([], {hour12:false});
+};
+tick(); setInterval(tick, 1000);
+</script>
+</body>
+</html>
