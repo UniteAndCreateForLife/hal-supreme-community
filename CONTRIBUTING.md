@@ -12,13 +12,19 @@ Thanks for helping HAL SUPREME grow as a **free, community-led** project. This r
 
 Be respectful. No harassment, hate, or doxxing. No posting secrets, tokens, or other people's private data. Moderators may remove content and ban accounts that break this. See [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
 
-## What you can contribute (v1)
+## What you can contribute
 
 - Documentation clarity (peer join, MCP setup, federation overview)
 - Examples: curl, OpenAI-compat JSON blocks, MCP `mcp.json` templates (**placeholders only**)
-- Website-slice polish: copy, accessibility, broken links on static join pages
-- Typos, issue templates, Discussion prompts
+- Website and holographic-UI polish: copy, accessibility, responsive behavior, lightweight prototypes
+- Reliability/evaluation fixtures and reproducible public regression tests
+- Creator/media UX prototypes using synthetic or contributor-owned assets
+- Rights, attribution, provenance, and remix-permission schemas
+- Interoperability examples for public-safe agent/tool integrations
+- Typos, issue templates, Discussion prompts, onboarding and translations
 - Repro notes for **public** product bugs (UI), filed as issues
+
+See [docs/BUILD_TOGETHER.md](docs/BUILD_TOGETHER.md) and [docs/PROJECT_IDEAS.md](docs/PROJECT_IDEAS.md) for current contribution tracks and work packages.
 
 ## What is out of scope (do not PR here)
 
@@ -62,7 +68,7 @@ See [docs/mcp-setup.md](docs/mcp-setup.md) for notes on public vs local gateway.
 
 ## Good first issues
 
-Look for the label `good first issue`. Typical starters:
+Look for the label `good first issue`. The broader public backlog is in [docs/PROJECT_IDEAS.md](docs/PROJECT_IDEAS.md). Typical starters:
 
 1. Improve peer-join wording for first-time OpenAI-compat users
 2. Add a copy-paste curl block for `GET /health` and `GET /v1/models`
