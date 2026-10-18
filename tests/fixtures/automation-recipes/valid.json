@@ -1,0 +1,18 @@
+{
+  "schema_version": "hal.community.automation-recipe.v1",
+  "recipe_id": "example.manual-check",
+  "title": "Synthetic manual check",
+  "trigger": {"type": "manual"},
+  "execution": {
+    "mode": "shadow",
+    "concurrency": "skip_if_running",
+    "quiet_if_no_change": true
+  },
+  "permissions": {
+    "read_scopes": [],
+    "write_scopes": [],
+    "approval_policy": "read_only"
+  },
+  "steps": [{"id": "check", "action": "Inspect a synthetic fixture", "mutates": false}],
+  "expected_receipts": ["no_change"]
+}
